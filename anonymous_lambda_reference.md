@@ -4,7 +4,7 @@ https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
 
 ## Anonymous classes
 
-Les classes anònimes és quan creem un objecte i redeclarem alguns mètodes de la seva classe/interface al mateix temps. Java crea, al vol, una nova classe sense nom, que extén la orginal, per a aquest objecte.
+Les classes anònimes és quan creem un objecte i, al mateix temps, redeclarem alguns mètodes de la seva classe/interface. Java crea, al vol, una nova classe sense nom, que extén la orginal, per a aquest objecte.
 
 ### Classe anònima que exten una classe
 
