@@ -6,9 +6,7 @@ https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
 
 Les classes anònimes és quan creem un objecte i redeclarem alguns mètodes de la seva classe/interface al mateix temps. Java crea, al vol, una nova classe sense nom per a aquest objecte.
 
-En el següent exemple definim la classe `Animal`, i després instanciem l'objecte `gos` al mateix temps que redeclarem el mètode `imprimirNom()`  de la classe `Animal`
-
-L'objecte `gos`, aleshores, __no__ és de la classe `Animal` sinò d'una classe nova _sense nom_. La classe `Animal` és la __superclasse__ d'aquesta classe anònima.
+En el següent exemple definim la classe `Animal`, i després instanciem l'objecte `gos` al mateix temps que redeclarem el mètode `imprimirNom()`  de la classe `Animal`. L'objecte `gos`, aleshores, __no__ és de la classe `Animal` sinò d'una classe nova _sense nom_. La classe `Animal` és la __superclasse__ d'aquesta classe anònima.
 
 ```java
 class Animal {
