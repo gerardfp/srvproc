@@ -1,2 +1,4 @@
+CFGS Desenvolpament d'Aplicacions Multiplataforma
 # Programació de serveis i processos
-## CFGS Desenvolpament d'Aplicacions Multiplataforma
+
+0. [Anonymous clases, lambda expresions, method references](./anonymous_lambda_reference.md)
