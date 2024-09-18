@@ -243,12 +243,12 @@ public class Main {
             System.out.println("Dime la posición: ");
             int posicion = scanner.nextInt();
 
-            System.out.println("El número en la posicion " + posicion + " de la sucesión de fibonacci es: " + fibonaci(posicion));
+            System.out.println("El número en la posicion " + posicion + " de la sucesión de fibonacci es: " + fibonacci(posicion));
         }
     }
 
-    static int fibonaci(int n){
-        return n < 2 ? n : fibonaci(n - 1) + fibonaci(n - 2);
+    static int fibonacci(int n){
+        return n < 2 ? n : fibonacci(n - 1) + fibonacci(n - 2);
     }
 }
 ```
