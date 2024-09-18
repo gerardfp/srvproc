@@ -68,7 +68,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Creem una classe anonima que implementa Animal
-        Animal gos = new Gos(){
+        Animal gos = new Animal(){
             public void parlar(){
                 System.out.println("Guau");
             }
@@ -93,6 +93,29 @@ public class Main {
         Animal gos = () -> System.out.println("Guau");
 
         gos.parlar();
+    }
+}
+```
+
+En definitiva, fer una expressió lambda és com una classe anònima pero llevant el nom de classe i del mètode, i deixant només els parèntesis del mètode.
+
+Quan s'implementa un mètode que només té un paràmetre se poden llevar inclús els parèntesis del mètode:
+
+```java
+interface Saludador {
+    void saludar(String persona);
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+                                    // Aci estem implementant el metode saludar(String persona)
+        Saludador saludadorAngles = (persona) -> System.out.println("Hello " + persona);
+        Saludador saludadorItalia = persona -> System.out.println("Ciao " + persona);
+
+
+        saludadorAngles.saludar("Gerard");  // Hello Gerard
+        saludadorItalia.saludar("Gerard");  // Ciao Gerard
     }
 }
 ```
