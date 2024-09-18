@@ -186,6 +186,41 @@ public class Main {
 
 <br />
 
+#### 🧘 Exercici 1
+
+Afegeix una acció a cada botó utilitzant el seu mètode `addActionListener()`. L'acció consisteix en imprimir el text `S'ha polsat el botó Mega ButtonX` (on `X` és el numero corresponent):
+
+* `button1`: pasa-li al mètode `addActionListener()` per paràmetre una expresió lambda
+* `button2` i `button3`: asigna una expressió lambda a una variable, i pasa la mateixa variable als dos botons. Observa que quan el botó faça la crida a la expressió lambda li passa un paràmetre `ActionEvent` que pots utlitzar per saber quin dels dos botons s'ha polsat.
+
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class Main extends JFrame {
+    public static void main(String[] args) {
+        new Main().start();
+    }
+
+    public void start() {
+        JButton button1 = new JButton("Mega Button1");
+        add(button1);
+
+        JButton button2 = new JButton("Mega Button2");
+        add(button2);
+
+        JButton button3 = new JButton("Mega Button3");
+        add(button3);
+
+        setSize(600, 200);
+        setLayout(new GridLayout(1, 3));
+        setVisible(true);
+    }
+}
+```
+
+<br />
+
 #### 🏄‍♀️ Exercici 1 
 
 La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
