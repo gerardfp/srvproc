@@ -186,7 +186,7 @@ public class Main {
 
 <br />
 
-#### 🧘 Exercici 1
+### 🧘 Exercici 1
 
 Afegeix una acció a cada botó utilitzant el seu mètode `addActionListener()`. L'acció consisteix en imprimir el text `S'ha polsat el botó Mega ButtonX` (on `X` és el numero corresponent):
 
@@ -221,7 +221,7 @@ public class Main extends JFrame {
 
 <br />
 
-#### 🏄‍♀️ Exercici 1 
+### 🏄‍♀️ Exercici 1 
 
 La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
 passen el filtre.
