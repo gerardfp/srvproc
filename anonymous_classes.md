@@ -2,9 +2,7 @@
 
 - [Exercicis Anonymous classes](#exercicis-anonymous-classes)
 
-## Anonymous classes
-
-### Overview
+## Overview
 
 https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
 
@@ -91,7 +89,10 @@ public class Main {
 }
 ```
 
-### Exercicis Anonymous classes
+<br />
+
+## Exercicis Anonymous classes
+
 <br />
 
 #### 🍎 Exercici 1 
