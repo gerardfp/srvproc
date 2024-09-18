@@ -190,7 +190,7 @@ public class Main {
 
 Afegeix una acció a cada botó utilitzant el seu mètode `addActionListener()`. L'acció consisteix en imprimir el text `S'ha polsat el botó Mega ButtonX` (on `X` és el numero corresponent):
 
-* `button1`: pasa-li al mètode `addActionListener()` per paràmetre una expressió lambda
+* `button1`: pasa-li al seu mètode `addActionListener()`, per paràmetre, una expressió lambda
 * `button2` i `button3`: assigna una expressió lambda a una variable, i passa la mateixa variable als dos botons. Observa que quan el botó faça la crida a la expressió lambda li passa un paràmetre `ActionEvent` que pots utlitzar per saber quin dels dos botons s'ha polsat.
 
 ```java
