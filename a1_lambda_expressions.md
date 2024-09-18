@@ -221,7 +221,40 @@ public class Main extends JFrame {
 
 <br />
 
-### 🏄‍♀️ Exercici 1 
+### 🏋️‍♀️ Exercici 2
+La [Sucesión de Fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci) es la secuencia de números _0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ..._ en la que cada número es la suma de los números anteriores.
+El siguiente programa pide repetidamente una posición al usuario y calcula el número que está en esa posición en la Sucesión.
+
+El problema es que la implementación recursiva clásica del método `int fibonacci(int n)` es muy ineficiente y a partir de la posición `40` le empieza a costar calcular el número. Y claro, hasta que no acaba el cálculo de un número no nos pide el cálculo del segundo (desaprovechando, así, núcleos de la CPU). 
+
+Podemos solucionar esto haciendo que se hagan los cálculos en segundo plano, y mientras se van haciendo calculos se le pueden ir pidiendo al usuario nuevas posiciones para calcular.
+Conforme se vayan acabando los cálculos ya se irán imprimiendo...
+
+Podemos hacer esto de de forma sencilla creando un **_hilo de ejecución virtual_** con el método `Thread.ofVirtual().start()`, pasándole un objeto que implemente el interface `Runnable`. Por suerte este interface solo tiene un método (`run()`) y podemos usar una expresión lambda para crear un objeto que lo implemente. Simplemente deberás poner el `System.out.println` dentro de la implementación del método `run()`.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while(true) {
+            System.out.println("Dime un numero: ");
+            int posicion = scanner.nextInt();
+
+            System.out.println("El número en la posicion " + posicion + " de la sucesión de fibonacci es: " + fibonaci(posicion));
+        }
+    }
+
+    static int fibonaci(int n){
+        if (n==0 || n==1) return n;
+        return fibonaci(n-1) + fibonaci(n-2);
+    }
+}
+```
+
+<br />
+
+### 🏄‍♀️ Exercici 3 
 
 La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
 passen el filtre.
@@ -263,3 +296,56 @@ public class Main {
     }
 }
 ```
+
+<br />
+
+### 🤺 Exercici 4 
+
+Este ejercicio es muy similar al ejercicio anterior. Solo que en lugar de una lista de numeros haremos el filtrado a una lista de objetos de clase `Estudiante`.
+
+1. Crear una clase `Estudiante` con los atributos: `nombre` (String) y `nota` (int)
+2. Crear una lista de estudiantes con sus nombres y notas.
+3. Crea una clase MostradorDeAlumnos con un método `mostrar()` que reciba como parámetros la lista de alumnos y el `Filtro`
+4. Modifica adecuadamente el interfaz `Filtro`
+5. Utiliza el filtrado para mostrar los estudiantes:
+    * Con nota superior o igual a 5
+    * Cuyo nombre empieze por la letra C
+    * Cuyo nombre tenga más de cinco letras
+    * Todos los alumnos (_sin filtro_)
+
+<br />
+
+### 🤹‍♂️ Exercici 5
+
+Las `List` en java tiene un método `forEach` que permite realizar una acción _para cada_ uno de los elementos.
+Implementa tu propio método `paraCada` en la clase `Almacen`.
+
+1. Define un interface `Accion` con un método `hacerAccion` al que se le pasa un producto.
+2. Define el método `paraCada` en la clase `Almacen` al que se le pase un objeto `Accion`. Este método harà un `for` de los productos de la `List` y por cada producto llamará al método `hacerAccion` de la `Accion` y le pasará el producto.
+3. Utiliza el método `paraCada` en el objeto `almacen` del `main` para imprimir sus productos.
+
+
+```java
+
+record Producto(String nombre, int precio) {}
+
+class Almacen {
+
+    List<Producto> productos;
+
+    Almacen(List<Producto> productos) { this.productos = productos; }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        Almacen almacen = new Almacen(List.of(new Producto("lapiz", 5), new Producto("boli", 6), new Producto("libro", 10)));
+
+    }
+}
+```
+
+
+
+### 
