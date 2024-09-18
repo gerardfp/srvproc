@@ -196,6 +196,8 @@ Fes tres crides al mètode `mostrar()` passant-li la llista `números` i tres fi
 * Que el número siga parell
 * Que el número siga múltiple de 3
 
+**Utilitza expressions lambda per a implementar els filtres**
+
 ```java
 import java.util.List;
 
