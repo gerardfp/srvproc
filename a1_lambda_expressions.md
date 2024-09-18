@@ -187,4 +187,42 @@ public class Main {
 <br />
 
 #### 🍎 Exercici 1 
-Este mèto
+
+La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
+passen els filtre.
+
+Fes tres crides al mètode `mostrar()` passant-li la llista `números` i tres filtres diferents.
+* Que el número siga major a 4
+* Que el número siga parell
+* Que el número siga múltiple de 3
+
+```java
+import java.util.List;
+
+interface Filtre {
+    boolean filtrar(int numero);
+}
+
+
+class MostradorDeNumeros {
+    void mostrar(List<Integer> numeros, Filtre filtre) {
+        for (var numero : numeros) {
+            if (filtre.filtrar(numero)) {
+                System.out.print(numero + " ");
+            }
+        }
+        System.out.println();
+    }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        var numeros = List.of(2, 6, 4, 8, 1, 9, 3, 7, 5);
+
+        MostradorDeNumeros mostradorDeNumeros = new MostradorDeNumeros();
+        
+    }
+}
+```
