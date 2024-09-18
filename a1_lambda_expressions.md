@@ -106,7 +106,11 @@ En definitiva, fer una expressió lambda és com una classe anònima pero llevan
 
 <br />
 
-### ⚽️ Omitir els parèntesis del mètode
+
+
+
+
+### ⚽️ Omitir els parèntesis `( )` del mètode
 
 Quan s'implementa un mètode que **_només té un paràmetre_** se poden llevar inclús els parèntesis del mètode:
 
@@ -128,8 +132,35 @@ public class Main {
     }
 }
 ```
+### 🏀 Omitir les claus `{ }`del bloc del mètode
 
-Si el mètode a implementar només té una instrucció return, es pot omitir la paraula `return`:
+Si el mètode a implementar **_només té una instrucció_**, es poden omitir les claus `{ }`:
+
+```java
+interface Symbol {
+    void imprmir();
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Symbol euro = () -> {
+            System.out.println("€");
+        };
+
+        Symbol dolar = () -> System.out.println("$");
+
+
+        euro.imprmir();     // €
+        dolar.imprmir();    // $
+    }
+}
+```
+
+
+### 🥎 Omitir la paraula `return`
+
+Si el mètode a implementar **_només té una instrucció return_**, es pot omitir la paraula `return` (i les claus `{ }`):
 ```java
 interface Operacio {
     int realitzar(int numero1, int numero2);
@@ -146,6 +177,7 @@ public class Main {
     }
 }
 ```
+
 
 
 <br />
