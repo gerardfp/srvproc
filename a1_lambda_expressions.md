@@ -132,7 +132,7 @@ public class Main {
     }
 }
 ```
-### 🏀 Omitir les claus `{ }`del bloc del mètode
+### 🏀 Omitir les claus `{ }` del bloc del mètode
 
 Si el mètode a implementar **_només té una instrucció_**, es poden omitir les claus `{ }`:
 
