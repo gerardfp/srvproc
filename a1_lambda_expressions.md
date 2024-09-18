@@ -233,12 +233,14 @@ Conforme se vayan acabando los cálculos ya se irán imprimiendo...
 Podemos hacer esto de de forma sencilla creando un **_hilo de ejecución virtual_** con el método `Thread.ofVirtual().start()`, pasándole un objeto que implemente el interface `Runnable`. Por suerte este interface solo tiene un método (`run()`) y podemos usar una expresión lambda para crear un objeto que lo implemente. Simplemente deberás poner el `System.out.println` dentro de la implementación del método `run()`.
 
 ```java
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         while(true) {
-            System.out.println("Dime un numero: ");
+            System.out.println("Dime la posición: ");
             int posicion = scanner.nextInt();
 
             System.out.println("El número en la posicion " + posicion + " de la sucesión de fibonacci es: " + fibonaci(posicion));
@@ -246,7 +248,7 @@ public class Main {
     }
 
     static int fibonaci(int n){
-        if (n==0 || n==1) return n;
+        if (n < 2) return n;
         return fibonaci(n-1) + fibonaci(n-2);
     }
 }
