@@ -325,6 +325,8 @@ Implementa tu propio método `paraCada` en la clase `Almacen`.
 3. Utiliza el método `paraCada` en el objeto `almacen` del `main` para imprimir sus productos.
 
 
+Extra Points: Haz que al método `paraCada`, además de la Accion se le pueda pasar un `Filtro`, y realice la acción solo a los elemento que pasen ese filtro.
+
 ```java
 
 record Producto(String nombre, int precio) {}
@@ -348,4 +350,4 @@ public class Main {
 
 
 
-### 
+### 🧗 Exercici 6
