@@ -348,6 +348,10 @@ public class Main {
 }
 ```
 
-
+<br />
 
 ### 🧗 Exercici 6
+
+Encuentra algún método en la extensa API de Java en el que se pueda usar una expresión lambda, y pon un ejemplo. 
+
+Si no encuentras ninguno te doy un ejemplo: utiliza el método `Collections.sort()` para ordenar una lista de strings de forma alfabética por el segundo caracter.
