@@ -1,7 +1,6 @@
-# Anonymous classes, Lambda expressions i Method references
+# Anonymous classes
 
-- [Anonymous classes](#anonymous-classes)
-  - [Exercicis Anonymous classes](#exercicis-anonymous-classes)
+- [Exercicis Anonymous classes](#exercicis-anonymous-classes)
 
 ## Anonymous classes
 
