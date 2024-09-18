@@ -319,14 +319,14 @@ Este ejercicio es muy similar al ejercicio anterior. Solo que en lugar de una li
 ### 🤹‍♂️ Exercici 5
 
 Las `List` en Java tienen un método `forEach` que permite realizar una acción _para cada_ uno de los elementos.
-Implementa tu propio método `paraCada` en la clase `Almacen`.
+Implementa tu propio método `paraCadaProducto` en la clase `Almacen`.
 
 1. Define un interface `Accion` con un método `hacerAccion` al que se le pasa un producto.
-2. Define el método `paraCada` en la clase `Almacen` al que se le pase un objeto `Accion`. Este método harà un `for` de los productos de la `List` y por cada producto llamará al método `hacerAccion` de la `Accion` y le pasará el producto.
-3. Utiliza el método `paraCada` en el objeto `almacen` del `main` para imprimir sus productos.
+2. Define el método `paraCadaProducto` en la clase `Almacen` al que se le pase un objeto `Accion`. Este método harà un `for` de los productos de la `List` y por cada producto llamará al método `hacerAccion` de la `Accion` y le pasará el producto.
+3. Utiliza el método `paraCadaProducto` en el objeto `almacen` del `main` para imprimir sus productos.
 
 
-!!! Extra Points: Haz que al método `paraCada`, además de la `Accion` se le pueda pasar un `Filtro`, y realice la acción solo a los elemento que pasen ese filtro.
+!!! Extra Points: Haz que al método `paraCadaProducto`, además de la `Accion` se le pueda pasar un `Filtro`, y realice la acción solo a los elementos que pasen ese filtro.
 
 ```java
 
