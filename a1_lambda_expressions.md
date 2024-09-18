@@ -318,7 +318,7 @@ Este ejercicio es muy similar al ejercicio anterior. Solo que en lugar de una li
 
 ### 🤹‍♂️ Exercici 5
 
-Las `List` en java tiene un método `forEach` que permite realizar una acción _para cada_ uno de los elementos.
+Las `List` en Java tienen un método `forEach` que permite realizar una acción _para cada_ uno de los elementos.
 Implementa tu propio método `paraCada` en la clase `Almacen`.
 
 1. Define un interface `Accion` con un método `hacerAccion` al que se le pasa un producto.
