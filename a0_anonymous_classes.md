@@ -95,7 +95,7 @@ public class Main {
 
 <br />
 
-#### 🍎 Exercici 1 
+### 🍎 Exercici 1 
 Este mètode `imprimirJerarquiaDeClasses()` imprimix la jerarquia de classes d'una classe, és a dir, la seua superclasse, i la superclasse de la seua superclasse, i la superclasse de la superclasse de la seua superclasse, i així __recursivament__.
 
 ```java
@@ -170,7 +170,7 @@ Has d'utilitzar una classe anònima que implemente un interface.
 
 <br />
 
-#### 🌻 Exercici 2
+### 🌻 Exercici 2
 
 Modifica el següent programa, per a que l'objecte `notification` siga d'una classe anònima que extenga la classe `Notification`, de forma que quan el paràmetre `num` siga major a 99, imprimisca `You have +99 new messages`, i quan el número siga 1, ho diga en singular.
 
@@ -197,7 +197,7 @@ public class Main {
 
 <br />
 
-#### 💼 Exercici 3 
+### 💼 Exercici 3 
 
 Modifica i completa el següent programa:
 
@@ -230,7 +230,7 @@ public class Main {
 
 <br />
 
-#### ☕ Exercici 4 
+### ☕ Exercici 4 
 
 Modifica el següent programa per a que vaja demanant a l'usuari (Scanner i println) les alertes que vol posar. Quan l'usuari deixe en blanc la resposta, el programa finalitzarà.
 ```java
@@ -302,7 +302,7 @@ public class Main {
 
 <br />
 
-#### ✨ Exercici 5
+### ✨ Exercici 5
 
 Programa el mètode `ferSalutacio()`. Crea tres objectes per a Sauldar en tres idiomes:
 
@@ -338,7 +338,7 @@ public class Main {
 
 <br />
 
-#### 💒 Exercici 6
+### 💒 Exercici 6
 
 Afegeix una acció a cadascun dels botons utilitzant el mètode `addActionListener()` sobre cadascun d'ells. L'acció pot ser simplement un `print`.
 
