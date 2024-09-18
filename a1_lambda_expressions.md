@@ -309,7 +309,7 @@ Este ejercicio es muy similar al ejercicio anterior. Solo que en lugar de una li
 4. Modifica adecuadamente el interfaz `Filtro`
 5. Utiliza el filtrado para mostrar los estudiantes:
     * Con nota superior o igual a 5
-    * Cuyo nombre empieze por la letra C
+    * Cuyo nombre contenga la letra C
     * Cuyo nombre tenga más de cinco letras
     * Todos los alumnos (_sin filtro_)
 
