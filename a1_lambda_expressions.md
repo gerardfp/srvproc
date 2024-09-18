@@ -225,7 +225,7 @@ public class Main extends JFrame {
 La [Sucesión de Fibonacci](https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci) es la secuencia de números _0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ..._ en la que cada número es la suma de los números anteriores.
 El siguiente programa pide repetidamente una posición al usuario y calcula el número que está en esa posición en la Sucesión.
 
-El problema es que la implementación recursiva clásica del método `int fibonacci(int n)` es muy ineficiente y a partir de la posición `40` le empieza a costar calcular el número. Y claro, hasta que no acaba el cálculo de un número no nos pide el cálculo del segundo (desaprovechando, así, núcleos de la CPU). 
+El problema es que la implementación recursiva clásica del método `int fibonacci(int n)` es muy ineficiente y a partir de la posición `40` le empieza a costar calcular el número. Y claro, hasta que no acaba el cálculo de un número no nos pide el cálculo del siguiente (desaprovechando, así, núcleos de la CPU). 
 
 Podemos solucionar esto haciendo que se hagan los cálculos en segundo plano, y mientras se van haciendo calculos se le pueden ir pidiendo al usuario nuevas posiciones para calcular.
 Conforme se vayan acabando los cálculos ya se irán imprimiendo...
