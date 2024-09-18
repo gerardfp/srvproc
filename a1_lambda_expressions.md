@@ -186,7 +186,7 @@ public class Main {
 
 <br />
 
-#### 🍎 Exercici 1 
+#### 🏄‍♀️ Exercici 1 
 
 La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
 passen els filtre.
