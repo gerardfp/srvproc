@@ -189,7 +189,7 @@ public class Main {
 #### 🏄‍♀️ Exercici 1 
 
 La classe `MostradorDeNumeros` té el mètode `mostrar()` que rep una llista de números i un `Filtre`. Aquest métode fa un `for` dels números i només imprimeix els que
-passen els filtre.
+passen el filtre.
 
 Fes tres crides al mètode `mostrar()` passant-li la llista `números` i tres filtres diferents.
 * Que el número siga major a 4
