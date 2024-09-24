@@ -12,14 +12,6 @@ Per exemple, en lloc d'escriure una lambda com `str -> System.out.println(str)`,
 
 <br />
 
-> [!WARNING]
-> Només podem simplificar una lambda amb una referència al mètode quan els paràmetres de la lambda se passen **_en el mateix ordre_** al mètode que crida la lambda:
->
->* ```(a, b) -> algun.mètode(a, b)```  sí ho podem simplificar amb ```algun::metode```
->* ```(a, b) -> unaltre.metode(b)``` no ho podem simplificar
->* ```(a, b) -> unmes.metode(a)``` no ho podem simplificar
->* ```(a, b) -> other.metode()``` no ho podem simplificar
-
 ### Tipus de Method references
 
 N'hi han quatre tipus de _method references_:
@@ -32,6 +24,14 @@ N'hi han quatre tipus de _method references_:
 | Referencia a un constructor | `ClassName::new` | `HashSet::new` |
 
 ### 🥹 Referencia a un mètode static
+
+> [!WARNING]
+> Només podem simplificar una lambda amb una referència a un mètode static quan els paràmetres de la lambda se passen **_en el mateix ordre_** al mètode que crida la lambda:
+>
+>* ```(a, b) -> algun.mètode(a, b)```  sí ho podem simplificar amb ```algun::metode```
+>* ```(a, b) -> unaltre.metode(b)``` no ho podem simplificar
+>* ```(a, b) -> unmes.metode(a)``` no ho podem simplificar
+>* ```(a, b) -> other.metode()``` no ho podem simplificar
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode static `mètode(int a)`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
