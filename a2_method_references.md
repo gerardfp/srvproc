@@ -203,15 +203,15 @@ public class Main {
 record Estudiant (String nom, Integer edat, Boolean matriculat) {
 
     public boolean comparaPerEdat(Estudiant b) {
-        return edat > b.edat;
+        return edat < b.edat;
     }
 
     public boolean comparaPerNom(Estudiant b) {
-        return nom.charAt(0) > b.nom.charAt(0);
+        return nom.charAt(0) < b.nom.charAt(0);
     }
 
     public boolean comparaPerMatriculat(Estudiant b){
-        return !matriculat;
+        return matriculat;
     }
 }
 
@@ -229,7 +229,7 @@ class MyFixedSizeArrayList<T> {
     void ordenar(Comparador<T> comparador) {
         for (int i = 0; i < elements.length - 1; i++) {
             for (int j = 0; j < elements.length - 1 - i; j++) {
-                if (comparador.comparar(elements[j], elements[j + 1])) {
+                if (comparador.comparar(elements[j+1], elements[j])) {
                     T temp = elements[j];
                     elements[j] = elements[j + 1];
                     elements[j + 1] = temp;
@@ -258,15 +258,15 @@ public class Main {
                 new Estudiant("Vanne", 10, false)
         );
 
-        System.out.println("ORDENATS PER NOM");
+        System.out.println("\nORDENATS PER NOM");
         estudiants.ordenar(Estudiant::comparaPerNom);
         estudiants.mostrar();
 
-        System.out.println("ORDENATS PER EDAT");
+        System.out.println("\nORDENATS PER EDAT");
         estudiants.ordenar(Estudiant::comparaPerEdat);
         estudiants.mostrar();
 
-        System.out.println("ORDENATS PER MATRICULAT");
+        System.out.println("\nORDENATS PER MATRICULAT");
         estudiants.ordenar(Estudiant::comparaPerMatriculat);
         estudiants.mostrar();
     }
