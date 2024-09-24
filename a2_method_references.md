@@ -12,6 +12,7 @@ Per exemple, en lloc d'escriure una lambda com `str -> System.out.println(str)`,
 
 <br />
 
+<!--
 ### Tipus de Method references
 
 N'hi han quatre tipus de _method references_:
@@ -22,18 +23,15 @@ N'hi han quatre tipus de _method references_:
 | Referencia a un metode d'un objecte | `containingObject::instanceMethodName` |	`myComparisonProvider::compareByName` <br /> `myApp::appendStrings2` |
 | Referencia a un metode de l'objecte que se passa com a primer paràmetre |	`ContainingType::methodName` | `String::compareToIgnoreCase` <br /> `String::concat` |
 | Referencia a un constructor | `ClassName::new` | `HashSet::new` |
+-->
 
 ### 🥹 Referencia a un mètode static
 
-> [!WARNING]
-> Només podem simplificar una lambda amb una referència a un mètode static quan els paràmetres de la lambda se passen **_en el mateix ordre_** al mètode que crida la lambda:
->
->* ```(a, b) -> algun.mètode(a, b)```  sí ho podem simplificar amb ```algun::metode```
->* ```(a, b) -> unaltre.metode(b)``` no ho podem simplificar
->* ```(a, b) -> unmes.metode(a)``` no ho podem simplificar
->* ```(a, b) -> other.metode()``` no ho podem simplificar
+Si dintre d'una lambda només fem una crida a un métode static, i els parámetres que rep la lambda li'ls passem **_en el mateix ordre_** a aquest mètode static, aleshores podem
+transformar la lambda en un _method reference_.
 
-En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode static `mètode(int a)`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
+
+En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode static `mètode(int a)`, i a més a més, el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
 ```java
 interface MyLambda {
@@ -57,6 +55,9 @@ public class Main {
 ```
 
 ### 😢 Referencia a un mètode d'un objecte
+
+Si dintre d'una lambda només fem una crida a un métode d'un objecte, i els parámetres que rep la lambda li'ls passem **_en el mateix ordre_** a aquest mètode, aleshores podem
+transformar la lambda en un _method reference_.
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'bjecte `myObject`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
@@ -85,6 +86,9 @@ public class Main {
 
 ### 😭 Referencia a un mètode de l'objecte que se passa com a primer paràmetre
 
+Si dintre d'una lambda només fem una crida a un métode del objecte que se passa per primer paràmetre, i la resta de parámetres li'ls passem **_en el mateix ordre_** a aquest mètode, aleshores podem
+transformar la lambda en un _method reference_.
+
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'objecte `myObject` que se li passa com a primer paràmetre, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
 ```java
@@ -110,6 +114,9 @@ public class Main {
 
 ### 🤯 Referencia a un constructor
 
+Si dintre d'una lambda només fem una crida a un métode constructor, i els parámetres que rep la lambda li'ls passem **_en el mateix ordre_** a aquest mètode constructor, aleshores podem
+transformar la lambda en un _method reference_.
+
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al constructor de la classe `MyClass`,  i el paràmetre `int a` que rep li'l passa al constructor en el mateix ordre:
 
 ```java
@@ -129,6 +136,59 @@ public class Main {
         MyLambda myLambda = MyClass::new;
 
         myLambda.doMyLambda(7);
+    }
+}
+```
+
+## Exercicis Method references
+
+### 1 
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+interface MyLambda<A> {
+    A doMyLambda(String name);
+}
+
+class CreadorDeObjetos {
+    static <T> List<T> crear(MyLambda<T> lambda, List<String> names) {
+        List<T> objects = new ArrayList<>();
+
+        for(String name : names) {
+            objects.add(lambda.doMyLambda(name));
+        }
+
+        return objects;
+    }
+}
+
+record Ciudad (String name) {}
+
+class Album {
+    String titulo;
+    Album(String titulo){ this.titulo = titulo; }
+    public String toString() { return "Album{titulo='" + titulo + "'}"; }
+}
+
+class Coche {
+    String marca;
+    Coche(String marca){ this.marca = marca; }
+    public String toString() { return "Coche{marca='" + marca + "'}"; }
+}
+
+
+public class Main {
+    public static void main(String[] args) {
+
+        var coches = CreadorDeObjetos.crear(Coche::new, List.of("Seat", "Fiat", "Audi"));
+        var asignaturas = CreadorDeObjetos.crear(Album::new, List.of("Abbey Road", "Nevermind", "The Wall"));
+        var ciudades = CreadorDeObjetos.crear(Ciudad::new, List.of("Paris", "Londres", "Burriana"));
+
+        coches.forEach(System.out::println);
+        asignaturas.forEach(System.out::println);
+        ciudades.forEach(System.out::println);
     }
 }
 ```
