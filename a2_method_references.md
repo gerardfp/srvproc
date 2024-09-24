@@ -56,7 +56,7 @@ public class Main {
 }
 ```
 
-### 😿 Referencia a un mètode d'un objecte
+### 😢 Referencia a un mètode d'un objecte
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'bjecte `myObject`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
@@ -83,7 +83,7 @@ public class Main {
 }
 ```
 
-### 😢 Referencia a un mètode de l'objecte que se passa com a primer paràmetre
+### 😭 Referencia a un mètode de l'objecte que se passa com a primer paràmetre
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'objecte `myObject` que se li passa com a primer paràmetre, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
@@ -108,7 +108,7 @@ public class Main {
 }
 ```
 
-### 😭 Referencia a un constructor
+### 🤯 Referencia a un constructor
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al constructor de la classe `MyClass`,  i el paràmetre `int a` que rep li'l passa al constructor en el mateix ordre:
 
