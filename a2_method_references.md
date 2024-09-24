@@ -31,7 +31,7 @@ N'hi han quatre tipus de _method references_:
 | Referencia a un metode de l'objecte que se passa com a primer paràmetre |	`ContainingType::methodName` | `String::compareToIgnoreCase` <br /> `String::concat` |
 | Referencia a un constructor | `ClassName::new` | `HashSet::new` |
 
-### 😿 Referencia a un mètode static
+### 🥹 Referencia a un mètode static
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode static `mètode(int a)`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
@@ -56,7 +56,7 @@ public class Main {
 }
 ```
 
-### 🥹 Referencia a un mètode d'un objecte
+### 😿 Referencia a un mètode d'un objecte
 
 En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'bjecte `myObject`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
