@@ -187,11 +187,11 @@ public class Main {
     public static void main(String[] args) {
 
         var coches = CreadorDeObjetos.crear(Coche::new, List.of("Seat", "Fiat", "Audi"));
-        var asignaturas = CreadorDeObjetos.crear(Album::new, List.of("Abbey Road", "Nevermind", "The Wall"));
+        var albumes = CreadorDeObjetos.crear(Album::new, List.of("Abbey Road", "Nevermind", "The Wall"));
         var ciudades = CreadorDeObjetos.crear(Ciudad::new, List.of("Paris", "Londres", "Burriana"));
 
         coches.forEach(System.out::println);
-        asignaturas.forEach(System.out::println);
+        albumes.forEach(System.out::println);
         ciudades.forEach(System.out::println);
     }
 }
