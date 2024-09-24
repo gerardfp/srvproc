@@ -59,7 +59,7 @@ public class Main {
 Si dintre d'una lambda només fem una crida a un métode d'un objecte, i els parámetres que rep la lambda li'ls passem **_en el mateix ordre_** a aquest mètode, aleshores podem
 transformar la lambda en un _method reference_.
 
-En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'bjecte `myObject`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
+En el següent exemple, l'objecte `myLambda` implementa el mètode `doMyLambda(int a)` i només fa una crida al mètode `mètode(int a)` de l'objecte `myObject`, i el paràmetre `int a` que rep li'l passa al mètode en el mateix ordre:
 
 ```java
 interface MyLambda {
