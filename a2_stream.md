@@ -19,9 +19,8 @@ public class Main {
 
         String hash = mineBlock(data, difficulty);
 
-        var end = LocalDateTime.now();
         System.out.println("Hash encontrado: " + hash);
-        System.out.println("Tiempo tardado: " + ChronoUnit.MILLIS.between(start, end));
+        System.out.println("Tiempo tardado: " + ChronoUnit.MILLIS.between(start, LocalDateTime.now()));
     }
 
     public static String mineBlock(String data, int difficulty) {
@@ -32,7 +31,6 @@ public class Main {
             String hash = simpleHash(data + nonce);
 
             //System.out.println(hash);
-            // Verifica si el hash comienza con el número deseado de ceros
             if (hash.startsWith(target)) {
                 System.out.println("Bloque minado! Nonce: " + nonce);
                 return hash;
@@ -40,7 +38,6 @@ public class Main {
         }
     }
 
-    // Un algoritmo de hashing sencillo basado en operaciones de suma y manipulación de caracteres
     public static String simpleHash(String input) {
         int hash = 0;
 
