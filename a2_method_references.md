@@ -8,7 +8,9 @@ https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html
 
 Un **method reference** en Java és una forma simplificada de referir-se a un mètode sense haver d'escriure una lambda completa. En lloc d'escriure un bloc de codi anònim que únicament invoca a un mètode, pots utilitzar una referència directa a aquest mètode. S'utilitza l'operador `::`
 
-Exemple: en lloc d'escriure una lambda com `str -> System.out.println(str)`, pots usar una method reference: `System.out::println`.
+Per exemple: 
+
+en lloc d'escriure una lambda com `str -> System.out.println(str)`, pots usar una method reference: `System.out::println`.
 
 <br />
 
