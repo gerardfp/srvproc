@@ -150,6 +150,12 @@ public class Main {
 
 ### 🥾 Exercici 1 
 
+Utilitza el mètode `crear()` per a crear una `List` d'objectes de cada classe: `Ciudad`, `Album` i `Coche`.
+Després utilitza el mètode `Iterable.forEach()` sobre cada llista per a imprimir-les.
+
+**En els dos casos has d'utilitzar Method References**
+
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -188,33 +194,28 @@ class Coche {
 public class Main {
     public static void main(String[] args) {
 
-        var coches = CreadorDeObjetos.crear(Coche::new, List.of("Seat", "Fiat", "Audi"));
-        var albumes = CreadorDeObjetos.crear(Album::new, List.of("Abbey Road", "Nevermind", "The Wall"));
-        var ciudades = CreadorDeObjetos.crear(Ciudad::new, List.of("Paris", "Londres", "Burriana"));
+        // Crea les llistes
 
-        coches.forEach(System.out::println);
-        albumes.forEach(System.out::println);
-        ciudades.forEach(System.out::println);
+        // Imprimeix-les
+
     }
 }
 ```
 
 ### 👢 Exercici 2
 
+Implementa els mètodes de la classe `Estudiant`:
+* `boolean comparaPerNom(Estudiant b)`: compara l'estudiant `this` i l'estudiant `b`, per la primera lletra del nom
+* `booblean comparaPerEdat(Estudiant b)`: compara l'estudiant `this` i l'estudiant `b`, de menor a major edat
+* `boolean comparaPerMatriculat(Estudiant b)`: compara l'estudiant `this` i l'estudiant `b`, primer els matriculats i després els no matriculats
+
+Utilitza el mètode `ordenar()` amb referències als mètodes anteriors, per a ordenar els estudiants d'aquestes tres maneres.
+
+Utilitza el mètode `mostrar()` per a mostrar els alumnes.
+
 ```java
 record Estudiant (String nom, Integer edat, Boolean matriculat) {
-
-    public boolean comparaPerEdat(Estudiant b) {
-        return edat < b.edat;
-    }
-
-    public boolean comparaPerNom(Estudiant b) {
-        return nom.charAt(0) < b.nom.charAt(0);
-    }
-
-    public boolean comparaPerMatriculat(Estudiant b){
-        return matriculat;
-    }
+    // implementa els mètodes
 }
 
 interface Comparador<T> {
@@ -261,21 +262,23 @@ public class Main {
         );
 
         System.out.println("\nORDENATS PER NOM");
-        estudiants.ordenar(Estudiant::comparaPerNom);
-        estudiants.mostrar();
+        // ordena
+        // mostra
 
         System.out.println("\nORDENATS PER EDAT");
-        estudiants.ordenar(Estudiant::comparaPerEdat);
-        estudiants.mostrar();
+        // ordena
+        // mostra
 
         System.out.println("\nORDENATS PER MATRICULAT");
-        estudiants.ordenar(Estudiant::comparaPerMatriculat);
-        estudiants.mostrar();
+        // ordena
+        // mostra
     }
 }
 ```
 
 ### Exercici 3
+
+Utilitza el mètode `perCada()` per a imprimir les llistes amb cadascuna de les impresores.
 
 ```java
 record Impresora(String color) {
@@ -310,8 +313,8 @@ public class Main {
         Impresora impresoraBlau = new Impresora("\033[34m");
         Impresora impresoraGroc = new Impresora("\033[33m");
 
-        myStringList.perCada(impresoraBlau::imprimir);
-        myStringList.perCada(impresoraGroc::imprimir);
+        // imprimeix la llista en blau
+        // imprimeix la llista en groc
     }
 }
 ```
