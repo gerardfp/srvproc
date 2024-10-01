@@ -327,4 +327,4 @@ public class Main {
 
 ### 👟 Exercici 4
 
-Realitza l'exercici 3, reimplementant els mètodes de comparació: canvia'ls de mètodes d'instancia a mètodes `static`.
+Realitza l'exercici 2, reimplementant els mètodes de comparació: canvia'ls de mètodes d'instancia a mètodes `static`.
