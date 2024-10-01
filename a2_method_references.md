@@ -202,6 +202,8 @@ public class Main {
 }
 ```
 
+<br />
+
 ### 👢 Exercici 2
 
 Implementa els mètodes de la classe `Estudiant`:
@@ -276,7 +278,9 @@ public class Main {
 }
 ```
 
-### Exercici 3
+<br />
+
+### 🥾 Exercici 3
 
 Utilitza el mètode `perCada()` per a imprimir les llistes amb cadascuna de les impresores.
 
@@ -318,3 +322,9 @@ public class Main {
     }
 }
 ```
+
+<br />
+
+### 👟 Exercici 4
+
+Realitza l'exercici 3, reimplementant els mètodes de comparació: canvia'ls de mètodes d'instancia a mètodes `static`.
