@@ -64,7 +64,7 @@ El primer parámetro (100) es el primer elemento del Stream, cada nuevo elemento
 
 #### 🟢 IntStream, LongStream, DoubleStream
 
-Permite crear secuencias consecutivas de números en un rango
+Permite crear secuencias consecutivas de números en un rango. Los elementos del Stream son de tipos primitivos (`int`, `long` o `double`) y no se pueden transformar en otra clase.
 
 ```java
 IntStream.range(1,5);  // 1 2 3 4
