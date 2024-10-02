@@ -18,7 +18,7 @@ Veamos cada una de estas fases:
 
 ### ⛲️ Fuente: creación de un Stream
 
-Hay múltiples maneras de crear un Stream, veremos algunos ejemplos. Es importante saber que una vez creado, no se puede modificar la fuente de datos, es decir, no se pueden añadir nuevos elementos al Stream. Lo que sí podremos hacer es quitar, reordenar o transformar elementos.
+Hay múltiples maneras de crear un Stream, veremos algunos ejemplos.
 
 #### 🟢 A partir de un array
 
@@ -82,7 +82,7 @@ Files.lines(Paths.get("/ruta/a/fichero");
 
 ### 💅🏻 Operaciones intermedias: transformación de un Stream
 
-En esta fase se pueden quitar elementos del Stream, ordenarlos o transformarlos
+En esta fase se pueden quitar elementos del Stream, ordenarlos o transformarlos.
 
 #### ❌ Quitar elementos
 
@@ -144,6 +144,92 @@ Stream.of(2, 4, 5, 3, 1).sorted((a, b) -> a % 2 == 0 ? 1 : a.equals(b) ? 0 : -1)
 Stream.of("bbbbb", "aaaa", "eee", "cc", "d").sorted(
     (a,b) -> a.length() > b.length() ? 1 : a.length() == b.length() ? 0 : -1
 );  //  d cc eee aaaa bbbbb
+```
+
+#### 🥸 Transformar elementos
+
+##### 🟢 map
+
+Toma cada elemento y hace una acción sobre él, retornando un elemento de la misma clase o de otra distinta.
+
+```java
+Stream.of(1,2,3).map(n -> n*10);   // 10 20 30
+Stream.of(1, 2, 3).map(n -> n + "º");   // "1º" "2º" "3º"
+```
+
+##### 🟢 mapMulti
+
+Toma cada elemento, y permite añadir al Stream diversos elementos nuevos a partir de el.
+
+```java
+ Stream.of(1,2,3).mapMulti((e, d) -> {
+    d.accept(e + "º");
+    d.accept(e*10);
+});   // "1º" 10 "2º" 20 "3º" 30
+```
+
+##### 🟢 flatMap
+
+Transforma cada elemento de un Stream en otro Stream, y luego junta estos Streams resultantes en un único Stream. Esto es particularmente útil cuando tenemos varias listas y queremos unirlas en una única lista:
+
+```java
+List<Integer> lista1 = List.of(1,2,3);
+List<Integer> lista2 = List.of(4,5,6);
+List<Integer> lista3 = List.of(7,8,9);
+
+Stream.of(lista1, lista2, lista3).flatMap(List::stream);  // 1 2 3 4 5 6 7 8 9
+```
+
+##### 🟢 peek
+
+En realidad, `peek` no transforma los elementos de un Stream, sino que realiza una acción con cada uno de ellos, y los vuelve a meter en el Stream.
+
+### 🚧 Operaciones terminales: producir un resultado o hacer una acción
+
+Estas operaciones finalizan el stream. Después de ellas ya no se puede seguir haciendo acciones sobre el Stream. O bien retornan un resultado, o hacen una acción con cada elemento.
+
+##### 🟢 count
+
+Retorna un `long` con el número de elementos en el Stream
+
+```java
+long numeroDeElementos = Stream.of(45,67,89).count();   // 3
+```
+
+##### 🟢 min/max
+
+Retorna un `Optional` con el elemento mínimo/maximo encontrado (si había algun elemento).
+
+```java
+Optional<Integer> minimoA = Stream.of(1, 3, 5, 7).min(Integer::compare);
+System.out.println(minimoA.get());  // 1
+
+Optional<Integer> minimoB = Stream.of(1, 3, 5, 7).filter(n -> n % 2 == 0).min(Integer::compare);
+System.out.println(minimoB.isPresent());  // false
+```
+
+##### 🟢 findFirst
+
+Retorna un `Optional` con el primer elemento del Stream, o un `Optional` vació si no había ningún elemento en el Stream
+
+```java
+Optional<Integer> minimoA = Stream.of(4,2,7).findFirst();
+System.out.println(minimoA.get());  // 4
+```
+
+##### 🟢 anyMatch
+
+Retorna un `boolean` indicando si algun elemento cumple la condición proporcionada
+
+```java
+boolean hayAlgunPar = Stream.of(4,2,7).anyMatch(n -> n % 2 == 0);  // true
+boolean hayAlgunoQueEmpiecePorA = Stream.of("hola", "adios", "que tal").anyMatch(n -> n.startsWith("a"));  // true
+```
+
+##### 🟢 allMatch
+Retorna un `boolean` indicando si todos los elementos cumplen la condición proporcionada
+```java
+boolean todosContienenLaA = Stream.of("hola", "adios", "que tal").allMatch(n -> n.contains("a")); // true
 ```
 
 <br />
