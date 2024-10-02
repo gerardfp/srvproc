@@ -82,15 +82,15 @@ Files.lines(Paths.get("/ruta/a/fichero");
 
 ### 💅🏻 Operaciones intermedias: transformación de un Stream
 
-En esta fase se pueden quitar elementos del Stream o transformarlos
+En esta fase se pueden quitar elementos del Stream, ordenarlos o transformarlos
 
-#### Quitar elementos
+#### ❌ Quitar elementos
 
 ##### 🟢 skip
 
 Permite saltarse los primeros elementos del Stream.
 
-```
+```java
 Stream.of("e1", "e2", "e3", "e4", "e5").skip(2);  // e3 e4 e5
 ```
 
@@ -122,13 +122,29 @@ Stream.of(2, 4, 6, 7, 8, 10, 3).takeWhile(n -> n%2 ==0);  // 2 4 6
 
 ##### 🟢 filter
 Elimina todos los elementos que **no** cumplen una condición.
-```
+```java
 Stream.of(2, 4, 6, 7, 8, 10, 3).filter(n -> n % 2 == 0);  // 2 4 6 8 10
 ```
 
+#### 🔄 Ordenar elementos
 
-#### Ordenar elementos
+##### 🟢 sorted
 
+Ordena los elementos acorde al orden _natural_, o acorde a la funcion de ordenación proporcionada
+
+```java
+Stream.of(2, 4, 5, 3, 1).sorted();  // 1 2 3 4 5
+Stream.of("bbbbb", "aaaa", "eee", "cc", "d").sorted();  // aaaa bbbbb cc d eee
+```
+
+La función de comparación debe retornar un número negativo, cero o positivo, según el primer argumento sea menor, igual o mayor al segundo.
+
+```java
+Stream.of(2, 4, 5, 3, 1).sorted((a, b) -> a % 2 == 0 ? 1 : a.equals(b) ? 0 : -1);   // 1 3 5 2 4
+Stream.of("bbbbb", "aaaa", "eee", "cc", "d").sorted(
+    (a,b) -> a.length() > b.length() ? 1 : a.length() == b.length() ? 0 : -1
+);  //  d cc eee aaaa bbbbb
+```
 
 <br />
 
