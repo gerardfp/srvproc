@@ -14,9 +14,11 @@ Un `Stream` es una secuencia de elementos que admite diversas operaciones realiz
 
 Veamos cada una de estas fases:
 
+<br />
+
 ### ⛲️ Fuente: creación de un Stream
 
-Hay múltiples maneras de crear un Stream, veremos algunos ejemplos. Es importante saber que una vez creado, no se puede modificar la fuente de datos, es decir, no se pueden añadir nuevos elementos al Stream.
+Hay múltiples maneras de crear un Stream, veremos algunos ejemplos. Es importante saber que una vez creado, no se puede modificar la fuente de datos, es decir, no se pueden añadir nuevos elementos al Stream. Lo que sí podremos hacer es quitar o transformar elementos.
 
 #### 🟢 A partir de un array
 
@@ -29,7 +31,7 @@ Arrays.stream(array);
 #### 🟢 A partir de una Collection (List, Set)
 
 ```java
-List<String> lista = new ArrayList<>(); 
+List<String> lista = List.of("e1", "e2", "e3");
 
 lista.stream();
 ```
@@ -70,7 +72,36 @@ Permite crear un stream con las líneas de un fichero
 Files.lines(Paths.get("/ruta/a/fichero");
 ```
 
+<br />
+
 ### 💅🏻 Operaciones intermedias: transformación de un Stream
+
+En esta fase se pueden quitar elementos del Stream o transformarlos
+
+#### Quitar elementos
+
+##### 🟢 skip
+
+Permite saltarse los primeros elementos del Stream.
+
+```
+List.of("e1", "e2", "e3", "e4", "e5").stream().skip(2);  // e3 e4 e5
+```
+
+##### 🟢 limit
+
+Permite quedarse solo con los primeros elementos del Stream.
+```java
+List.of("e1", "e2", "e3", "e4", "e5").stream().limit(2);   // e1 e2
+```
+
+##### 🟢 distinct
+Permite eliminar los elementos duplicados del Stream
+
+```java
+List.of("e1", "e2", "e3", "e2", "e3").stream().distinct();  // e1
+```
+
 
 <br />
 
