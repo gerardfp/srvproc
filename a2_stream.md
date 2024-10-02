@@ -184,6 +184,8 @@ Stream.of(lista1, lista2, lista3).flatMap(List::stream);  // 1 2 3 4 5 6 7 8 9
 
 En realidad, `peek` no transforma los elementos de un Stream, sino que realiza una acción con cada uno de ellos, y los vuelve a meter en el Stream.
 
+<br />
+
 ### 🚧 Operaciones terminales: producir un resultado o hacer una acción
 
 Estas operaciones finalizan el stream. Después de ellas ya no se puede seguir haciendo acciones sobre el Stream. O bien retornan un resultado, o hacen una acción con cada elemento.
@@ -227,10 +229,64 @@ boolean hayAlgunoQueEmpiecePorA = Stream.of("hola", "adios", "que tal").anyMatch
 ```
 
 ##### 🟢 allMatch
+
 Retorna un `boolean` indicando si todos los elementos cumplen la condición proporcionada
+
 ```java
-boolean todosContienenLaA = Stream.of("hola", "adios", "que tal").allMatch(n -> n.contains("a")); // true
+boolean todosContienenLaA = Stream.of("hola", "adios", "que tal").allMatch(n -> n.contains("a"));   // true
 ```
+
+
+##### 🟢 noneMatch
+
+Retorna un `boolean` indicando si ningún elemento cumple la condición proporcionada
+
+```java
+ boolean ningunoEsMayorACinco = Stream.of(3,2,4,1).noneMatch(n -> n > 5);   // true
+```
+
+
+##### 🟢 reduce
+
+Si ninguna de las operaciones anteriores sirve para obtener el resultado que deseamos, siempre podemos escribir nuestra propia funcion que produce un resultado con `reduce`
+
+Hay tres variaciones del método `reduce()`:
+
+* `reduce(BinaryOperator<T>)`
+* `reduce(T identity, BinaryOperator<T>)`
+* `reduce(U identity, BiFunction<U, ? super T, U>, BinaryOperator<U>)`
+
+`reduce(BinaryOperator<T>)`
+
+Retorna un `Optional`, con el resultado de acumular todos los elementos, según la función proporcionada
+
+```java
+Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a + b);   // 10
+
+Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a * b);   // 24
+```
+
+`reduce(T identity, BinaryOperator<T>)`
+
+Retorna un valor, resultado de acumular el primer parámetro pasado con todos los elementos, según la función proporcionada
+
+```java
+Optional<Integer> result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a + b);   // 10
+Optional<Integer> result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a + b);   // 11
+
+Optional<Integer> result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a * b);   // 0
+Optional<Integer> result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
+```
+
+##### 🟢 collect
+
+##### 🟢 toList
+
+##### 🟢 toArray
+
+##### 🟢 forEach
+
+
 
 <br />
 
