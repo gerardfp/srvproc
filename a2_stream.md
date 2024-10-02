@@ -18,7 +18,7 @@ Veamos cada una de estas fases:
 
 ### ⛲️ Fuente: creación de un Stream
 
-Hay múltiples maneras de crear un Stream, veremos algunos ejemplos. Es importante saber que una vez creado, no se puede modificar la fuente de datos, es decir, no se pueden añadir nuevos elementos al Stream. Lo que sí podremos hacer es quitar o transformar elementos.
+Hay múltiples maneras de crear un Stream, veremos algunos ejemplos. Es importante saber que una vez creado, no se puede modificar la fuente de datos, es decir, no se pueden añadir nuevos elementos al Stream. Lo que sí podremos hacer es quitar, reordenar o transformar elementos.
 
 #### 🟢 A partir de un array
 
@@ -35,6 +35,12 @@ List<String> lista = List.of("e1", "e2", "e3");
 
 lista.stream();
 ```
+
+#### 🟢 Stream.of
+```
+Stream.of("e1", "e2", "e3");
+```
+
 
 #### 🟢 Stream.generate()
 
@@ -85,22 +91,43 @@ En esta fase se pueden quitar elementos del Stream o transformarlos
 Permite saltarse los primeros elementos del Stream.
 
 ```
-List.of("e1", "e2", "e3", "e4", "e5").stream().skip(2);  // e3 e4 e5
+Stream.of("e1", "e2", "e3", "e4", "e5").skip(2);  // e3 e4 e5
 ```
 
 ##### 🟢 limit
 
 Permite quedarse solo con los primeros elementos del Stream.
 ```java
-List.of("e1", "e2", "e3", "e4", "e5").stream().limit(2);   // e1 e2
+Stream.of("e1", "e2", "e3", "e4", "e5").limit(2);   // e1 e2
 ```
 
 ##### 🟢 distinct
 Permite eliminar los elementos duplicados del Stream
 
 ```java
-List.of("e1", "e2", "e3", "e2", "e3").stream().distinct();  // e1
+Stream.of("e1", "e2", "e3", "e2", "e3").distinct();  // e1
 ```
+
+##### 🟢 dropWhile
+Permite eliminar los primeros elementos mientras se cumpla una condición. Cuando la condición no se cumple deja de eliminar elementos
+```java
+Stream.of(2, 4, 6, 7, 8, 10, 3).dropWhile(n -> n%2 ==0);  // 7 8 10 3
+```
+
+##### 🟢 takeWhile
+Permite quedarse solo con los primeros elementos mientras se cumpla una condición. Cuando la condición no se cumple elimina el resto de elementos
+```java
+Stream.of(2, 4, 6, 7, 8, 10, 3).takeWhile(n -> n%2 ==0);  // 2 4 6
+```
+
+##### 🟢 filter
+Elimina todos los elementos que **no** cumplen una condición.
+```
+Stream.of(2, 4, 6, 7, 8, 10, 3).filter(n -> n % 2 == 0);  // 2 4 6 8 10
+```
+
+
+#### Ordenar elementos
 
 
 <br />
