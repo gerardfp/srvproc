@@ -70,7 +70,7 @@ Permite crear un stream con las líneas de un fichero
 Files.lines(Paths.get("/ruta/a/fichero");
 ```
 
-### 🛠 Operaciones intermedias: transformación de un Stream
+### 💅🏻 Operaciones intermedias: transformación de un Stream
 
 <br />
 
