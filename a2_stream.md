@@ -4,7 +4,7 @@ https://docs.oracle.com/javase/tutorial/collections/streams/
 
 ## Overview
 
-Los Streams de Java, proporcionan una forma ágil de trabajar con colecciones de datos, como listas o arrays, permitiendo realizar operaciones co nun estilo funcional (lambdas y method references).
+Los Streams de Java, proporcionan una forma ágil de trabajar con colecciones de datos, como listas o arrays, permitiendo realizar operaciones con un estilo funcional (lambdas y method references).
 
 Un `Stream` es una secuencia de elementos que admite diversas operaciones realizadas _en cadena_ (conocido como _pipeline_). Esta cadena o _pipeline_ se divide en tres fases:
 
