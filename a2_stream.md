@@ -389,7 +389,7 @@ String[] result6 = Stream.of("a", "b", "c").toArray(String[]::new);
 
 Realiza un acción para cada uno de los elementos del Stream. Es una _operación terminal_, por lo tanto ya no retorna ningún Stream y no se pueden seguir realizando operaciones (en cambio, con `peek` sí se puede)
 
-```
+```java
 Stream.of("a", "b", "c").forEach(System.out::println);
 ```
 
