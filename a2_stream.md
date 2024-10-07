@@ -277,9 +277,13 @@ Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a * b);   // 24
 
 👉🏼 2. `T reduce(T identity, BinaryOperator<T> accumulator);`
 
-Retorna un valor, resultado de acumular el primer parámetro pasado -`identity`- con todos los elementos, según la función `accumulator` proporcionada.
+Retorna un valor, resultado de acumular el primer parámetro pasado -`identity`- con todos los elementos, según las funciones `accumulator` y `combiner` proporcionadas.
 
 **El resultado es de la misma clase que los elementos del Stream.**
+
+ * `identity`: determina el primer valor resultado. Después se aplicarán las funciones `acumulator` y `cominer` sobre él.
+ * `accumulator`: determina cómo se acumula cada elemento del Stream al valor resultado.
+ * `combiner`: determina cómo se combinan dos valores resultado intermedios.
 
 
 ```java
