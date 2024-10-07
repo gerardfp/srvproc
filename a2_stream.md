@@ -260,6 +260,8 @@ Hay tres variaciones del método `reduce()`:
 2. `T reduce(T identity, BinaryOperator<T> accumulator);`
 3. `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);`
 
+<br />
+
 👉🏼 1.  `Optional<T> reduce(BinaryOperator<T> accumulator);`
 
 Retorna un `Optional`, con el resultado de acumular todos los elementos, según la función `accumulator` proporcionada.
@@ -271,6 +273,7 @@ Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a + b);   // 10
 
 Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a * b);   // 24
 ```
+<br />
 
 👉🏼 2. `T reduce(T identity, BinaryOperator<T> accumulator);`
 
@@ -286,6 +289,8 @@ Integer result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a + b);   // 11
 Integer result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a * b);   // 0
 Integer result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
 ```
+
+<br />
 
 👉🏼 3. `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);`
 
