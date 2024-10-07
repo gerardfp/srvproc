@@ -358,25 +358,40 @@ Podemos encontrar _colectores_ predefinidos en la classe `Collectors`:
 
   * `Collectors.averagingInt`, `Collectors.averagingLong`, `Collectors.averagingDouble`: calculan la media de los elementos. Se le debe pasar una función que retorne cada elemento convertido en un   `int`, `long` o `double`. Siempre retorna un `Double`.
 
-  ```
-  Double result = Stream.of(1,2, 3).collect(Collectors.averagingInt(n -> n));   // 2.0
+  ```java
+  Double result = Stream.of(1, 2, 3).collect(Collectors.averagingInt(n -> n));   // 2.0
   ```
   
   * `Collectors.joining`: encadena un Stream de `String` usando el delimitador, prefijo y sufijo especificados.
   
-  ```
-  String result6 = Stream.of("a","b","c").collect(Collectors.joining("-", "[","]"));
+  ```java
+  String result = Stream.of("a", "b", "c").collect(Collectors.joining("-", "[","]"));
   ```
 
-  * `Collectors.toList`, `Collectors.toMap`, `Collectors.toSet`
 
 ##### 🟢 toList
 
+Retorna una `List` con los elementos del Stream
+
+```java
+List<String> result = Stream.of("a", "b", "c").toList()
+```
+
 ##### 🟢 toArray
+
+Retorna un `Array` con los elementos del Stream
+
+```java
+String[] result6 = Stream.of("a", "b", "c").toArray(String[]::new);
+```
 
 ##### 🟢 forEach
 
+Realiza un acción para cada uno de los elementos del Stream. Es una _operación terminal_, por lo tanto ya no retorna ningún Stream y no se pueden seguir realizando operaciones (en cambio, con `peek` sí se puede)
 
+```
+Stream.of("a", "b", "c").forEach(System.out::println);
+```
 
 <br />
 
