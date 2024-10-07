@@ -1,8 +1,11 @@
 # Streams
 
-https://docs.oracle.com/javase/tutorial/collections/streams/
+- [Exercicis Stream](#exercicis-stream)
+ 
 
 ## Overview
+
+https://docs.oracle.com/javase/tutorial/collections/streams/
 
 Los Streams de Java, proporcionan una forma ágil y expresiva de trabajar con colecciones de datos, como listas o arrays, permitiendo realizar operaciones con un estilo funcional (lambdas y method references).
 
@@ -289,6 +292,8 @@ Optional<Integer> result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
 
 
 <br />
+
+## Exercicis Stream
 
 ### Exercici 0,000001
 
