@@ -350,15 +350,25 @@ Es muy parecida a `reduce` solo que los métodos `accumulator` y `combiner` no r
 // aaa : aa : aaaa : a
 ```
 
+<br />
+
 🫴🏼 2. `<R, A> R collect(Collector<? super T, A, R> collector);`
 
 Podemos encontrar _colectores_ predefinidos en la classe `Collectors`:
 
-* `Collectors.averagingInt`, `Collectors.averagingLong`, `Collectors.averagingDouble`: calculan la media de los elementos. Se le debe pasar una función que retorne cada elemento convertido en un `int`, `long` o `double`. Siempre retorna un `Double`.
+  * `Collectors.averagingInt`, `Collectors.averagingLong`, `Collectors.averagingDouble`: calculan la media de los elementos. Se le debe pasar una función que retorne cada elemento convertido en un   `int`, `long` o `double`. Siempre retorna un `Double`.
 
-* `Collectors.joining`: encadena un Stream de `String` usando el delimitador, prefijo y sufijo especificados.
+  ```
+  Double result = Stream.of(1,2, 3).collect(Collectors.averagingInt(n -> n));   // 2.0
+  ```
+  
+  * `Collectors.joining`: encadena un Stream de `String` usando el delimitador, prefijo y sufijo especificados.
+  
+  ```
+  String result6 = Stream.of("a","b","c").collect(Collectors.joining("-", "[","]"));
+  ```
 
-* `Collectors.toList`, `Collectors.toMap`, `Collectors.toSet`
+  * `Collectors.toList`, `Collectors.toMap`, `Collectors.toSet`
 
 ##### 🟢 toList
 
