@@ -449,19 +449,23 @@ public class Main {
 
 <br />
 
-### Exercici 0,000001
+### 🔋 Exercici 0,000001
 
 ```java
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+
 /*
-Un algoritmo Proof-of-Work (PoW) es el que se utiliza en algunas criptomonedas, como Bitcoin, para validar transacciones y crear nuevos bloques
-en la cadena de bloques. Básicamente, PoW consiste en encontrar un valor que, cuando se combina con los datos de un bloque y se pasa por una
-función hash (como SHA-256), produce un hash que cumple con ciertas condiciones, como tener un número determinado de ceros al inicio.
-Para implementar un algoritmo de Proof-of-Work sencillo sin utilizar librerías de cifrado como SHA-256, podemos utilizar un hash casero basado
-en operaciones simples como la suma y manipulación de caracteres. Aunque este no es seguro ni eficiente como SHA-256, es útil para fines
-de ilustración.
+Un algoritmo Proof-of-Work (PoW) es el que se utiliza en algunas criptomonedas, como Bitcoin, para validar
+transacciones y crear nuevos bloques en la cadena de bloques. Básicamente, PoW consiste en encontrar un valor que,
+cuando se combina con los datos de un bloque y se pasa por una función hash (como SHA-256), produce un hash que cumple
+con ciertas condiciones, como tener un número determinado de ceros al inicio.
+
+Para implementar un algoritmo de Proof-of-Work sencillo sin utilizar librerías de cifrado como SHA-256, podemos utilizar
+un hash casero basado en operaciones simples como la suma y manipulación de caracteres. Aunque este no es seguro ni eficiente
+como SHA-256, es útil para fines de ilustración.
  */
+
 public class Main {
 
     public static void main(String[] args) {
