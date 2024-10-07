@@ -292,7 +292,7 @@ Integer result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a * b);   // 0
 Integer result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
 ```
 
-<br />
+
 
 👉🏼 3. `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);`
 
@@ -307,7 +307,7 @@ El resultado no tiene porqué ser de de la misma clase que los elementos del Str
 Solo se usa en Streams paralelos.
 
 ```java
-String result4 = Stream.of(3, 2, 4, 1).parallel()
+String result = Stream.of(3, 2, 4, 1).parallel()
         .reduce(
                 "a",
                 String::repeat,
@@ -325,8 +325,34 @@ El resultado obtenido por `collect` **no** tiene porqué ser de la misma clase q
 
 Hay dos variaciones del método `collect`:
 
-* `<R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner);`
-* `<R, A> R collect(Collector<? super T, A, R> collector);`
+1. `<R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner);`
+2. `<R, A> R collect(Collector<? super T, A, R> collector);`
+
+<br />
+
+🫴🏼 1. `<R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner);`
+
+Es muy parecida a `reduce` solo que los métodos `accumulator` y `combiner` no retornan un valor resultado, sino que modifican el primer parámetro pasado.
+
+```java
+ StringBuilder result = Stream.of(3, 2, 4, 1).parallel()
+         .collect(
+                 () -> new StringBuilder("a"),
+                 (string, integer) -> {
+                     String repetidos = string.toString().repeat(integer);
+                     string.delete(0, string.length());
+                     string.append(repetidos);
+                 },
+                 (string, string2) -> string.append(" : ").append(string2)
+         );   // aaa : aa : aaaa : a
+
+// 
+```
+
+🫴🏼 2. `<R, A> R collect(Collector<? super T, A, R> collector);`
+
+
+
 
 ##### 🟢 toList
 
