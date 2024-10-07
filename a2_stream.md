@@ -251,17 +251,20 @@ Retorna un `boolean` indicando si ningún elemento cumple la condición proporci
 
 ##### 🟢 reduce
 
-Si ninguna de las operaciones anteriores sirve para obtener el resultado que deseamos, siempre podemos escribir nuestra propia funcion que produce un resultado con `reduce`
+Si ninguna de las operaciones anteriores sirve para obtener el resultado que deseamos, siempre podemos escribir nuestra propia funcion que produce un resultado con `reduce`.
+
 
 Hay tres variaciones del método `reduce()`:
 
-* `reduce(BinaryOperator<T>)`
-* `reduce(T identity, BinaryOperator<T>)`
-* `reduce(U identity, BiFunction<U, ? super T, U>, BinaryOperator<U>)`
+1. `Optional<T> reduce(BinaryOperator<T> accumulator);`
+2. `T reduce(T identity, BinaryOperator<T> accumulator);`
+3. `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);`
 
-`reduce(BinaryOperator<T>)`
+👉🏼 1.  `Optional<T> reduce(BinaryOperator<T> accumulator);`
 
-Retorna un `Optional`, con el resultado de acumular todos los elementos, según la función proporcionada
+Retorna un `Optional`, con el resultado de acumular todos los elementos, según la función `accumulator` proporcionada.
+
+**El `Optional` resultante es de la misma clase que los elementos del Stream.**
 
 ```java
 Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a + b);   // 10
@@ -269,19 +272,39 @@ Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a + b);   // 10
 Optional<Integer> result = Stream.of(3,2,4,1).reduce((a,b) -> a * b);   // 24
 ```
 
-`reduce(T identity, BinaryOperator<T>)`
+👉🏼 2. `T reduce(T identity, BinaryOperator<T> accumulator);`
 
-Retorna un valor, resultado de acumular el primer parámetro pasado con todos los elementos, según la función proporcionada
+Retorna un valor, resultado de acumular el primer parámetro pasado -`identity`- con todos los elementos, según la función `accumulator` proporcionada.
+
+**El resultado es de la misma clase que los elementos del Stream.**
+
 
 ```java
-Optional<Integer> result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a + b);   // 10
-Optional<Integer> result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a + b);   // 11
+Integer result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a + b);   // 10
+Integer result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a + b);   // 11
 
-Optional<Integer> result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a * b);   // 0
-Optional<Integer> result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
+Integer result = Stream.of(3,2,4,1).reduce(0, (a,b) -> a * b);   // 0
+Integer result = Stream.of(3,2,4,1).reduce(1, (a,b) -> a * b);   // 24
 ```
 
+👉🏼 3. `<U> U reduce(U identity, BiFunction<U, ? super T, U> accumulator, BinaryOperator<U> combiner);`
+
+Retorna un valor, resultado de acumular el primer parámetro pasado -`identity`- con todos los elementos, según la función `accumulator` proporcionada.
+
+El resultado no tiene porqué ser de de la misma clase que los elementos del Stream.
+
+
+
 ##### 🟢 collect
+
+Permite **convertir** o **acumular** los elementos de un Stream en una colección o resultado final. 
+
+El resultado obtenido por `collect` **no** tiene porqué ser de la misma clase que los elementos del stream.
+
+Hay dos variaciones del método `collect`:
+
+* `<R> R collect(Supplier<R> supplier, BiConsumer<R, ? super T> accumulator, BiConsumer<R, R> combiner);`
+* `<R, A> R collect(Collector<? super T, A, R> collector);`
 
 ##### 🟢 toList
 
