@@ -312,7 +312,9 @@ String result = Stream.of(3, 2, 4, 1).parallel()
                 "a",
                 String::repeat,
                 (string, string2) -> string + " : " + string2
-        );  // aaa : aa : aaaa : a
+        );
+
+// aaa : aa : aaaa : a
 ```
 
 
@@ -344,15 +346,19 @@ Es muy parecida a `reduce` solo que los métodos `accumulator` y `combiner` no r
                      string.append(repetidos);
                  },
                  (string, string2) -> string.append(" : ").append(string2)
-         );   // aaa : aa : aaaa : a
-
-// 
+         );
+// aaa : aa : aaaa : a
 ```
 
 🫴🏼 2. `<R, A> R collect(Collector<? super T, A, R> collector);`
 
+Podemos encontrar _colectores_ predefinidos en la classe `Collectors`:
 
+* `Collectors.averagingInt`, `Collectors.averagingLong`, `Collectors.averagingDouble`: calculan la media de los elementos. Se le debe pasar una función que retorne cada elemento convertido en un `int`, `long` o `double`. Siempre retorna un `Double`.
 
+* `Collectors.joining`: encadena un Stream de `String` usando el delimitador, prefijo y sufijo especificados.
+
+* `Collectors.toList`, `Collectors.toMap`, `Collectors.toSet`
 
 ##### 🟢 toList
 
