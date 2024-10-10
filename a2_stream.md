@@ -475,8 +475,7 @@ Ana:6.7
 Juan:5.4
 ```
 
-Escribe una utilidad que genere los datos del fichero de entrada
-* Utiliza ThreadLocalRandom.current().doubles() para generar números aleatorios. A partir de estos números genera el nombre y la nota.
+Escribe una utilidad que genere los datos del fichero de entrada. Utiliza `ThreadLocalRandom.current().doubles()`  para generar números aleatorios. A partir de estos números genera el nombre y la nota.
 
 <br />
 
