@@ -449,6 +449,37 @@ public class Main {
 
 <br />
 
+### 🌊 Exercici 2
+
+Haz un programa que lea un fichero con datos de estudiantes (nombre: string, nota: double) y escriba en otro fichero 
+los datos:
+
+* Ordenados por nombre
+* Eliminando duplicados
+* Con el nombre en mayúsculas
+
+Ejemplo:
+
+-- Entrada --
+```
+Juan:5.4
+Ana:6.7
+Manuel:8.6
+Ana:6.7
+```
+
+-- Salida --
+```
+Manuel:8.6
+Ana:6.7
+Juan:5.4
+```
+
+Escribe una utilidad que genere los datos del fichero de entrada
+* Utiliza ThreadLocalRandom.current().doubles() para generar números aleatorios. A partir de estos números genera el nombre y la nota.
+
+<br />
+
 ### 🔋 Exercici 0,000001
 
 ```java
