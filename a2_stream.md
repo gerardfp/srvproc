@@ -436,7 +436,7 @@ public class Main {
 3. La más corta
 4. Películas lanzadas después del 2000
 5. Con un rating mayor a 9
-6. Cuenta el número de películas lanzadas en los 60's
+6. Cuenta el número de películas lanzadas en los 70's
 7. Calcula el rating medio de todas las películas
 8. Lista las películas ordenadas alfabéticamente
 9. Ordenadas por duración en orden descendente
