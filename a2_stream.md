@@ -482,7 +482,7 @@ Escribe una utilidad que genere los datos del fichero de entrada. Utiliza `Threa
 
 ### 🎢 Exercici 3
 
-Refactoriza los siguientes programas de un estilo imperativo a funcional
+Refactoritza els següents programes d'un estil imperatiu a funcional
 
 ```java
 // a
