@@ -765,7 +765,10 @@ for(Button button: buttons){
 }
 
 // z
-
+while(true) {
+  String data = new String(new URI("https://fapik.vercel.app/api/string").toURL().openStream().readAllBytes());
+  System.out.println(data);
+}
 ```
 
 
