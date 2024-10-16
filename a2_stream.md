@@ -610,7 +610,6 @@ for (Integer number : numbers) {
 
 System.out.println(max);
 
-
 // p
 List<Integer> pNumbers = List.of(1, 2, 3, -4, 5);
 boolean pAllPositive = true;
