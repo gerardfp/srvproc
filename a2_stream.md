@@ -485,18 +485,22 @@ Escribe una utilidad que genere los datos del fichero de entrada. Utiliza `Threa
 Refactoriza los siguientes programas de un estilo imperativo a funcional
 
 ```java
+// a
 for(int i = 0; i < 5; i++) {
   System.out.println(i);
 }
-//
+
+//b
 for(int i = 0; i <= 5; i++) {
   System.out.println(i);
 }
-//
+
+//c
 for(int i = 0; i < 15; i = i + 3) {
   System.out.println(i);
 }
-//
+
+//d
 for(int i = 0;; i = i + 3) {
   if(i > 20) {
     break;
@@ -504,30 +508,87 @@ for(int i = 0;; i = i + 3) {
 
   System.out.println(i);
 }
-//
+
+//e
 for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
   System.out.println(name);
 }
-//
+
+//f
 for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
   if(name.length() == 4) {
     System.out.println(name);
   }
 }
-//
+
+//g
 for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
   String upperCaseName = name.toUpperCase(); 
   System.out.println(upperCaseName);
 }
-//
-for(String name: names) {
+
+//h
+for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
   if(name.length() == 4) {
     String upperCaseName = name.toUpperCase(); 
     System.out.println(upperCaseName);
   }
 }
-//
+
+//i
+List<Integer> iNumeros = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List<Integer> iNumerosImpares = new ArrayList<>();
+        
+for (Integer numero : iNumeros) {
+  if (numero % 2 == 0) {
+    iNumerosImpares.add(numero);
+  }
+}
+
+System.out.println(iNumerosImpares);
+
+//j
+// usa el método reduce()
+List<Integer> jNumeros = List.of(1, 2, 3, 4, 5);
+int jSuma = 0;
+        
+for (Integer number : numbers) {
+  jSuma += number;
+}
+        
+System.out.println(jSuma);
+
+//k
+List<String> kNombres = List.of("Joan", "Paula", "Kate", "Maricarmen", "Pedro", "Antonio");
+String kNombreLargo = null;
+
+for (String nombre : kNombres) {
+  if (nombre.length() > 5) {
+    kNombreLargo = nombre;
+    break;
+  }
+}
+
+System.out.println(kNombreLargo);
+
+//l
+List<Integer> lNumeros = new ArrayList<>(List.of(5, 3, 8, 1, 2));
+Collections.sort(lNumeros);
+System.out.println(lNumeros);
+
+//m
+List<String> mWords = List.of("poma", "platan", "poma", "taronja", "platan");
+int mCount = 0;
+
+for (String word : mWords) {
+  if (word.equals("poma")) {
+    mCount++;
+  }
+}
+
+System.out.println(mCount);
 ```
+
 
 
 ### 🔋 Exercici 0,000001
