@@ -767,7 +767,11 @@ for(Button button: buttons){
 // z
 while(true) {
   String data = new String(new URI("https://fapik.vercel.app/api/string").toURL().openStream().readAllBytes());
-  System.out.println(data);
+
+  for (char i : data.toCharArray()) {
+    System.out.print("\033["+((i < 91 ? 40 : 100) + i%7 )+ "m ");
+  }
+  System.out.println("\033[0m");
 }
 ```
 
