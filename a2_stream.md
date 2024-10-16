@@ -70,7 +70,8 @@ El primer parámetro (100) es el primer elemento del Stream, cada nuevo elemento
 Permite crear secuencias consecutivas de números en un rango. Los elementos del Stream son de tipos primitivos (`int`, `long` o `double`) y no se pueden transformar en otra clase.
 
 ```java
-IntStream.range(1,5);  // 1 2 3 4
+IntStream.range(1,5);        // 1 2 3 4
+IntStream.rangeClosed(1,5);  // 1 2 3 4 5
 ```
 
 #### 🟢 Files.lines()
@@ -478,6 +479,56 @@ JUAN:5.4
 Escribe una utilidad que genere los datos del fichero de entrada. Utiliza `ThreadLocalRandom.current().doubles()`  para generar números aleatorios. A partir de estos números genera el nombre y la nota.
 
 <br />
+
+### 🎢 Exercici 3
+
+Refactoriza los siguientes programas de un estilo imperativo a funcional
+
+```java
+for(int i = 0; i < 5; i++) {
+  System.out.println(i);
+}
+//
+for(int i = 0; i <= 5; i++) {
+  System.out.println(i);
+}
+//
+for(int i = 0; i < 15; i = i + 3) {
+  System.out.println(i);
+}
+//
+for(int i = 0;; i = i + 3) {
+  if(i > 20) {
+    break;
+  }
+
+  System.out.println(i);
+}
+//
+for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
+  System.out.println(name);
+}
+//
+for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
+  if(name.length() == 4) {
+    System.out.println(name);
+  }
+}
+//
+for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
+  String upperCaseName = name.toUpperCase(); 
+  System.out.println(upperCaseName);
+}
+//
+for(String name: names) {
+  if(name.length() == 4) {
+    String upperCaseName = name.toUpperCase(); 
+    System.out.println(upperCaseName);
+  }
+}
+//
+```
+
 
 ### 🔋 Exercici 0,000001
 
