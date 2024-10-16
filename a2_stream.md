@@ -696,10 +696,78 @@ uResult += "-|";
 System.out.println(uResult);
 
 // v
+record vMarcas(List<String> coches, List<String> motos){}
 
+var vMarcasList = List.of(
+  new vMarcas(List.of("Ferrari","Koenigsegg"), List.of("Ducati", "Yamaha", "Harley")),
+  new vMarcas(List.of("Lamborghini","Bugatti"), List.of("Kawasaki")),
+  new vMarcas(List.of("McLaren", "Aston Martin"), List.of())
+);
+
+var vMarcasCombined = new vMarcas(new ArrayList<>(), new ArrayList<>());
+
+for(var marcas : vMarcasList) {
+  vMarcasCombined.motos.addAll(marcas.motos);
+  vMarcasCombined.coches.addAll(marcas.coches);
+}
+
+System.out.println(vMarcasCombined.coches);
+System.out.println(vMarcasCombined.motos);
+
+// w
+String[] wDirectories = {"/tmp", "/root"};
+
+for (String directory : wDirectories) {
+    try {
+        for (File file : new File(directory).listFiles()) {
+            if (file.isFile()) {
+                System.out.println(file);
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("An error ocurred: " + e.getMessage());
+    }
+}
+
+// x
+try {
+  final var filePath = "/usr/share/dict/spanish";
+  final var wordOfInterest = "tona";
+
+  try (var reader = Files.newBufferedReader(Path.of(filePath))) {
+    String line = "";
+    long count = 0;
+
+    while ((line = reader.readLine()) != null) {
+      if (line.endsWith(wordOfInterest)) {
+        System.out.println(line);
+        count++;
+      }
+  }
+
+    System.out.printf("Found %d words that end with '%s'%n", count, wordOfInterest);
+  }
+} catch (Exception ex) {
+  System.out.println("ERROR: " + ex.getMessage());
+}
+
+// y
+record Button(int x, int y){}
+
+List<Button> buttons = new ArrayList<>();
+for (int i = 0; i < 5; i++) {
+  for (int j = 0; j < 3; j++) {
+    buttons.add(new Button(i,j));
+  }
+}
+
+for(Button button: buttons){
+  System.out.println(button);
+}
+
+// z
 
 ```
-
 
 
 ### 🔋 Exercici 0,000001
