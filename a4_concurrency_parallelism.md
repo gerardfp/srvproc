@@ -7,5 +7,5 @@ Aquesta capacitat concurrent d'un programa, permet la execució en paral·lel de
 El paral·lelisme i la concurrència són dues coses diferents: 
 * Un programa paral·lel utilitza diversos nuclis de CPU, cada nucli realitza una tasca de manera independent.
 * D'altra banda, la concurrència permet que un programa s'ocupe de múltiples tasques fins i tot en un sol nucli de CPU; el nucli canvia entre tasques (és a dir, fils) sense necessàriament completar cadascuna. Un programa pot tenir ambdues característiques, cap de les dues o una combinació de característiques de paral·lelisme i concurrència.
+<img src="./pub/concurrency_parallelism.svg" alt="Alt Text" width="480">
 
-![Diagrama concurrencia y paralelismo.](./pub/concurrency_parallelism.svg)
