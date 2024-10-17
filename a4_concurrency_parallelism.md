@@ -1,1 +1,1 @@
-![Diagrama concurrencia y paralelismo.](./pub/con_par.svg)
+![Diagrama concurrencia y paralelismo.](./pub/concurrency_parallelism.svg)
