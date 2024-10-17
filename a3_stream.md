@@ -537,15 +537,15 @@ for(String name: List.of("Joan", "Paula", "Kate", "Pedro")) {
 
 // i
 List<Integer> iNumeros = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-List<Integer> iNumerosImpares = new ArrayList<>();
+List<Integer> iNumerosPares = new ArrayList<>();
         
 for (Integer numero : iNumeros) {
   if (numero % 2 == 0) {
-    iNumerosImpares.add(numero);
+    iNumerosPares.add(numero);
   }
 }
 
-System.out.println(iNumerosImpares);
+System.out.println(iNumerosPares);
 
 // j
 // usa el método reduce()
