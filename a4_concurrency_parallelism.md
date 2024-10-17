@@ -1,7 +1,7 @@
 # Virtual Threads
 
 
-## Overwiew
+## Overview
 
 https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html
 
@@ -19,12 +19,28 @@ Sin embargo, la ejecución de Threads conlleva su problemática, en especial:
 
 Java provee diversos mecanismos para ejecutar Threads y manejar sus problemáticas.
 
-### Creación de Virtual Threads
+### 👹 Ejecución de Virtual Threads
 
-El método `Thread Thread.ofVirtual().start(Runnable task)` permite lanzar la ejecución de un Thread.
+#### 🟢 Thread.ofVirtual().start()
+
+El método `Thread Thread.ofVirtual().start(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
 
 ```java
 Thread thread = Thread.ofVirtual().start(() -> {
   // thread code
 });
 ```
+
+#### 🟢 Thread.startVirtualThread()
+
+
+El método `Thread Thread.Thread.startVirtualThread(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
+
+```java
+Thread thread = Thread.Thread.startVirtualThread(() -> {
+  // thread code
+});
+```
+
+### 🟢 Executors.newVirtualThreadPerTaskExecutor() 
+
