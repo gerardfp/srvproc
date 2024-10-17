@@ -552,7 +552,7 @@ System.out.println(iNumerosImpares);
 List<Integer> jNumeros = List.of(1, 2, 3, 4, 5);
 int jSuma = 0;
         
-for (Integer number : numbers) {
+for (Integer number : jNumeros) {
   jSuma += number;
 }
         
