@@ -76,8 +76,11 @@ System.out.println("Program finished");
 
 Los _Executors_ permiten manejar los threads de una forma más manejable.
 
-El executor _newVirtualThreadPerTask_ debe usarse en un bloque try-with-resources. **El executor no se cerrarà hasta que no finalicen todos los threads en ejecución**.
-Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
+El executor _newVirtualThreadPerTask_:
+
+* Debe usarse en un bloque try-with-resources.
+* El executor no se cerrarà hasta que no finalicen todos los threads en ejecución**
+* Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
 
 ```java
 try (var executor = Executors.newSingleThreadExecutor()) {
