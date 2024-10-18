@@ -53,7 +53,7 @@ Ambos métodos retornan un objeto `Thread` para poder manejar la tarea.
         for(int a = 10; a--> 0;) System.out.println(a);
     });
     
-    thread.join(long);  // esperar a que termine el thread
+    thread.join();  // esperar a que termine el thread
     
     System.out.println("Program finished");
     ```
