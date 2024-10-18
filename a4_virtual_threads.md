@@ -23,9 +23,9 @@ Java provee diversos mecanismos para ejecutar Threads y manejar sus problemátic
 
 ### 👹 Ejecución de Virtual Threads
 
-#### 🟢 Thread.ofVirtual().start()
+#### 🟢 Thread.ofVirtual().start() y Thread.startVirtualThread()
 
-El método `Thread Thread.ofVirtual().start(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
+El método `Thread Thread.ofVirtual().start(Runnable task)` permite lanzar la ejecución de un Thread. 
 
 ```java
 var thread = Thread.ofVirtual().start(() -> {
@@ -33,9 +33,7 @@ var thread = Thread.ofVirtual().start(() -> {
 });
 ```
 
-#### 🟢 Thread.startVirtualThread()
-
-El método `Thread Thread.Thread.startVirtualThread(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
+De igual manera, el método `Thread Thread.Thread.startVirtualThread(Runnable task)` permite lanzar la ejecución de un Thread.
 
 ```java
 var thread = Thread.Thread.startVirtualThread(() -> {
@@ -43,11 +41,42 @@ var thread = Thread.Thread.startVirtualThread(() -> {
 });
 ```
 
+Ambos métodos retorna un objeto `Thread` para poder manejar la tarea.
+
+* `join()`:
+    espera a que termine el thread. Es importante saber que si no se usa `join()` para esperar que un thread termine, el thread terminará cuando el thread que lo lanzó termine.
+
+```java
+var thread = Thread.startVirtualThread(() -> {
+    // thread code
+    for(int a = 10; a--> 0;) System.out.println(a);
+});
+
+thread.join(long);  // esperar a que termine el thread
+
+System.out.println("Program finished");
+```
+
+* `join(long milis)`:
+    espera a que termine el thread un tiempo determinado, si el thread no termina el programa continua
+
+```java
+var thread = Thread.startVirtualThread(() -> {
+    // thread code
+    for(int a = 100000000; a--> 0;) System.out.println(a);
+});
+
+thread.join(1000);  // esperar 1 segundo a que termine el thread
+
+System.out.println("Program finished");
+```
+
+
 #### 🟢 Executors.newVirtualThreadPerTaskExecutor() 
 
 Los _Executors_ permiten manejar los threads de una forma más manejable.
 
-El executor _newVirtualThreadPerTask_ debe usarse en un bloque try-with-resources. El executor no se cerrarà hasta que no finalicen todos los threads en ejecución.
+El executor _newVirtualThreadPerTask_ debe usarse en un bloque try-with-resources. **El executor no se cerrarà hasta que no finalicen todos los threads en ejecución**.
 Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
 
 ```java
@@ -57,3 +86,17 @@ try (var executor = Executors.newSingleThreadExecutor()) {
     });
 }
 ```
+
+Hay tres variaciones del método `submit()`:
+
+* `<T> Future<T> submit(Callable<T> task)`
+
+Envía una tarea-que-retorna-un-resultado para su ejecución y devuelve un `Future` que representa el resultado pendiente de la tarea. El método `get` del `Future` retornará el resultado de la tarea una vez completada con éxito.
+
+* `<T> Future<T> submit(Runnable task, T result)`
+
+Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get()` del _Future_ retornará el mismo valor `result` que se le proporcionó en la llamada a `submit`. Esto resulta útil para identificar cuál es la tarea que ha finalizado.
+
+* `Future<?> submit(Runnable task)`
+
+Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get()` del _Future_ retornará `null` cuando se haya completado.
