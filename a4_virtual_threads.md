@@ -79,7 +79,7 @@ Los _Executors_ permiten manejar los threads de una forma más manejable.
 El executor _newVirtualThreadPerTask_:
 
 * Debe usarse en un bloque try-with-resources.
-* El executor no se cerrarà hasta que no finalicen todos los threads en ejecución**
+* **El executor no se cerrarà hasta que no finalicen todos los threads en ejecución**
 * Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
 
 ```java
@@ -94,7 +94,7 @@ Hay tres variaciones del método `submit()`:
 
 * `<T> Future<T> submit(Callable<T> task)`
 
-Envía una tarea-que-retorna-un-resultado para su ejecución y devuelve un `Future` que representa el resultado pendiente de la tarea. El método `get` del `Future` retornará el resultado de la tarea una vez completada con éxito.
+Envía una _tarea-que-retorna-un-resultado_ para su ejecución y devuelve un `Future` que representa el resultado pendiente de la tarea. El método `get` del `Future` retornará el resultado de la tarea una vez completada con éxito.
 
 * `<T> Future<T> submit(Runnable task, T result)`
 
