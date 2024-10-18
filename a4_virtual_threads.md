@@ -36,40 +36,42 @@ var thread = Thread.ofVirtual().start(() -> {
 De igual manera, el método `Thread Thread.Thread.startVirtualThread(Runnable task)` permite lanzar la ejecución de un Thread.
 
 ```java
-var thread = Thread.Thread.startVirtualThread(() -> {
+var thread = Thread.startVirtualThread(() -> {
     // thread code
 });
 ```
 
-Ambos métodos retorna un objeto `Thread` para poder manejar la tarea.
+Ambos métodos retornan un objeto `Thread` para poder manejar la tarea.
 
 * `join()`:
-    espera a que termine el thread. Es importante saber que si no se usa `join()` para esperar que un thread termine, el thread terminará cuando el thread que lo lanzó termine.
+  
+    Espera a que termine el thread. Es importante saber que si no se usa `join()` para esperar que un thread termine, el thread terminará cuando el thread que lo lanzó termine.
 
-```java
-var thread = Thread.startVirtualThread(() -> {
-    // thread code
-    for(int a = 10; a--> 0;) System.out.println(a);
-});
-
-thread.join(long);  // esperar a que termine el thread
-
-System.out.println("Program finished");
-```
+    ```java
+    var thread = Thread.startVirtualThread(() -> {
+        // thread code
+        for(int a = 10; a--> 0;) System.out.println(a);
+    });
+    
+    thread.join(long);  // esperar a que termine el thread
+    
+    System.out.println("Program finished");
+    ```
 
 * `join(long milis)`:
-    espera a que termine el thread un tiempo determinado, si el thread no termina el programa continua
+  
+    Espera a que termine el thread un tiempo determinado, si el thread no termina el programa continua.
 
-```java
-var thread = Thread.startVirtualThread(() -> {
-    // thread code
-    for(int a = 100000000; a--> 0;) System.out.println(a);
-});
-
-thread.join(1000);  // esperar 1 segundo a que termine el thread
-
-System.out.println("Program finished");
-```
+    ```java
+    var thread = Thread.startVirtualThread(() -> {
+        // thread code
+        for(int a = 100000000; a--> 0;) System.out.println(a);
+    });
+    
+    thread.join(1000);  // esperar 1 segundo a que termine el thread
+    
+    System.out.println("Program finished");
+    ```
 
 
 #### 🟢 Executors.newVirtualThreadPerTaskExecutor() 
@@ -94,12 +96,42 @@ Hay tres variaciones del método `submit()`:
 
 * `<T> Future<T> submit(Callable<T> task)`
 
-Envía una _tarea-que-retorna-un-resultado_ para su ejecución y devuelve un `Future` que representa el resultado pendiente de la tarea. El método `get` del `Future` retornará el resultado de la tarea una vez completada con éxito.
+    Envía una _tarea-que-retorna-un-resultado_ para su ejecución y devuelve un `Future` que representa el resultado pendiente de la tarea. El método `get` del `Future` retornará el resultado de la tarea una vez completada con éxito.
+
+    ```java
+    var future = executor.submit(() -> {
+                // thread code
+                int a = 0;
+                while((a+=++a) < 10);
+                return a;  // retorna algun resultado
+            }
+    );
+    
+    int result = future.get();   // 15
+    ```
 
 * `<T> Future<T> submit(Runnable task, T result)`
+    
+    Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get` del _Future_ retornará el mismo valor `result` que se le proporcionó en la llamada a `submit`. Esto resulta útil para identificar cuál es la tarea que ha finalizado.
 
-Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get()` del _Future_ retornará el mismo valor `result` que se le proporcionó en la llamada a `submit`. Esto resulta útil para identificar cuál es la tarea que ha finalizado.
+    ```java
+    var future = executor.submit(() -> {
+        // thread code
+        // no retorna nada
+    }, 1234);
+
+    int result = future.get();   // 1234
+    ```
 
 * `Future<?> submit(Runnable task)`
 
-Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get()` del _Future_ retornará `null` cuando se haya completado.
+    Envia una tarea `Runnable` para su ejecución y retorna un `Future` representando dicha tarea. El método `get()` del _Future_ retornará `null` cuando se haya completado.
+
+    ```java
+    var future = executor.submit(() -> {
+        // thread code
+        // no retorna nada
+    });
+
+    future.get();  // null
+    ```
