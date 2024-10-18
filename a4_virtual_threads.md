@@ -19,6 +19,8 @@ Sin embargo, la ejecución de Threads conlleva su problemática, en especial:
 
 Java provee diversos mecanismos para ejecutar Threads y manejar sus problemáticas.
 
+<br />
+
 ### 👹 Ejecución de Virtual Threads
 
 #### 🟢 Thread.ofVirtual().start()
@@ -26,21 +28,32 @@ Java provee diversos mecanismos para ejecutar Threads y manejar sus problemátic
 El método `Thread Thread.ofVirtual().start(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
 
 ```java
-Thread thread = Thread.ofVirtual().start(() -> {
-  // thread code
+var thread = Thread.ofVirtual().start(() -> {
+    // thread code
 });
 ```
 
 #### 🟢 Thread.startVirtualThread()
 
-
 El método `Thread Thread.Thread.startVirtualThread(Runnable task)` permite lanzar la ejecución de un Thread. Retorna un objeto `Thread` para poder manejarlo.
 
 ```java
-Thread thread = Thread.Thread.startVirtualThread(() -> {
-  // thread code
+var thread = Thread.Thread.startVirtualThread(() -> {
+    // thread code
 });
 ```
 
-### 🟢 Executors.newVirtualThreadPerTaskExecutor() 
+#### 🟢 Executors.newVirtualThreadPerTaskExecutor() 
 
+Los _Executors_ permiten manejar los threads de una forma más manejable.
+
+El executor _newVirtualThreadPerTask_ debe usarse en un bloque try-with-resources. El executor no se cerrarà hasta que no finalicen todos los threads en ejecución.
+Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
+
+```java
+try (var executor = Executors.newSingleThreadExecutor()) {
+    var future = executor.submit(() -> {
+        // thread code
+    });
+}
+```
