@@ -814,7 +814,7 @@ public class Main {
         for (int nonce = 0; ; nonce++) {
             String hash = simpleHash(data + nonce);
 
-            //System.out.println(hash);
+            //System.out.println("simpleHash(" + data + " + " + nonce + ") = " + hash);
             if (hash.startsWith(target)) {
                 //System.out.println("Bloque minado! Nonce: " + nonce);
                 return hash;
