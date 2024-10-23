@@ -190,6 +190,79 @@ public class Apipa {
 }
 ```
 
-### ⏰ Cola de tareas
+<br />
 
-Desarrolla una clase para gestionar tareas
+### ⏰ Exercici 3: Chat P2P
+
+Desarrolla una aplicación de chat peer-to-peer.
+
+El programa tendrá dos partes: servidor y cliente. 
+* El servidor irá aceptando conexiones de clientes. Después irá escribiendo los mensajes que lleguen de esas conexiones.
+* El cliente tratará permenentemente de conectar con todos los servidores de su red con los que no esté ya conectado. Por otra parte, leerá un mensaje del teclado, y lo enviará a todos los servidores con los que esté conectado.
+
+Usa los siguientes programas como guía:
+
+`Servidor Básico`
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+public class ChatServer {
+    public static void main(String[] args) throws IOException {
+
+        ServerSocket serverSocket = new ServerSocket(7777);
+        System.out.println("Servidor iniciado " + serverSocket);
+
+        Socket clientSocket = serverSocket.accept();
+        System.out.println("Cliente conectado " + clientSocket);
+
+        var socketReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+        System.out.println("Esperando mensajes de " + clientSocket + "...");
+        socketReader.lines().forEach(System.out::println);
+
+        System.out.println("Servidor parado 🛑");
+    }
+}
+```
+
+`Cliente Básico`
+```java
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class ChatClient {
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        
+        Socket socket = new Socket("192.168.1.20", 7777);
+        System.out.println("Conectado al servidor " + socket);
+        
+        var socketWriter = new PrintWriter(socket.getOutputStream(), true);
+
+        while (true) {
+            System.out.println("Escribe un mensaje:");
+            socketWriter.println(scanner.nextLine());
+            System.out.println("Mensaje enviado");
+        }
+    }
+}
+```
+
+Para intentar conectar con los seridores:
+```java
+for (int i = 1; i < 50; i++) {
+    try {
+        System.out.println("Intentando conectar a 192.168.1." + i + "...");
+        Socket socket = new Socket("192.168.1." + i, 7777);
+        System.out.println("Conectado al servidor " + socket);
+    } catch (IOException e) {
+        System.out.println("No se pudo conectar al servdor 192.168.1." + i + "...");
+    }
+}
+```
