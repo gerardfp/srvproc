@@ -147,6 +147,8 @@ Hay tres variaciones del método `submit()`:
 
 Escribe un programa que cree dos threads que impriman cada uno un contador en un bucle infinito.
 
+<br /> 
+
 ### 🕰 Exercici 2
 
 Se pide desarrollar una aplicación que muestra el tiempo que hace. Los datos los obtenemos de una HTTP API, en concreto:
