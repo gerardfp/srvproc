@@ -254,7 +254,7 @@ public class ChatClient {
 }
 ```
 
-Para intentar conectar con los seridores:
+Para intentar conectar con los servidores:
 ```java
 for (int i = 1; i < 50; i++) {
     try {
