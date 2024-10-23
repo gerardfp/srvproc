@@ -194,6 +194,19 @@ public class Apipa {
 
 ### ⏰ Exercici 3: Chat P2P
 
+```mermaid
+architecture-beta
+    service db1(outline-wechat)[Peer1]
+    service db2(outline-wechat)[Peer2]
+    service db3(outline-wechat)[Peer3]
+    service db4(outline-wechat)[Peer4]
+
+    db1:L -- R:db2
+    db1:L -- R:db3
+    db1:L -- R:db4
+    db2:T -- B:db1
+    db3:T -- B:db3
+```
 Desarrolla una aplicación de chat peer-to-peer.
 
 El programa tendrá dos partes: servidor y cliente. 
