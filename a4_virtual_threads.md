@@ -194,6 +194,7 @@ public class Apipa {
 
 ### ⏰ Exercici 3: Chat P2P
 
+<img src="pub/chat_p2p.png" width=400 />
 
 Desarrolla una aplicación de chat peer-to-peer.
 
