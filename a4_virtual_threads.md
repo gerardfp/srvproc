@@ -1,5 +1,6 @@
 # Virtual Threads
 
+- [Exercicis Virtual threads](#exercicis-virtual-threads)
 
 ## Overview
 
@@ -135,3 +136,58 @@ Hay tres variaciones del método `submit()`:
 
     future.get();  // null
     ```
+
+<br />
+
+## Exercicis Virtual threads
+
+<br />
+
+### ⏳ Exercici 1
+
+Escribe un programa que cree dos threads que impriman cada uno un contador en un bucle infinito.
+
+### 🕰 Exercici 2
+
+Se pide desarrollar una aplicación que muestra el tiempo que hace. Los datos los obtenemos de una HTTP API, en concreto:
+
+* https://apipa.vercel.app/api/w/weather
+* https://apipa.vercel.app/api/w/temperature
+* https://apipa.vercel.app/api/w/wind
+* https://apipa.vercel.app/api/w/moon
+
+El problema es que esta API es muuuy utilizada y suele sobrecargarse...
+
+Haz algo para que la aplicación sea algo menos lenta...
+
+```java
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class Apipa {
+    public static void main(String[] args) {
+        String weather = fetch("https://apipa.vercel.app/api/w/weather");
+        String temperature = fetch("https://apipa.vercel.app/api/w/temperature");
+        String wind = fetch("https://apipa.vercel.app/api/w/wind");
+        String moon = fetch("https://apipa.vercel.app/api/w/moon");
+
+        System.out.println(weather);
+        System.out.println(temperature);
+        System.out.println(wind);
+        System.out.println(moon);
+    }
+
+    static String fetch(String url) {
+        try(var inputStream = new URI(url).toURL().openStream()) {
+            return new String(inputStream.readAllBytes());
+        } catch (IOException | URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+### ⏰ Cola de tareas
+
+Desarrolla una clase para gestionar tareas
