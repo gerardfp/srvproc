@@ -809,14 +809,14 @@ public class Main {
 
     public static String mineBlock(String data, int difficulty) {
         String target = String.format("%0"+difficulty+"d", 0);
-        System.out.println(target);
+        //System.out.println(target);
 
         for (int nonce = 0; ; nonce++) {
             String hash = simpleHash(data + nonce);
 
             //System.out.println(hash);
             if (hash.startsWith(target)) {
-                System.out.println("Bloque minado! Nonce: " + nonce);
+                //System.out.println("Bloque minado! Nonce: " + nonce);
                 return hash;
             }
         }
