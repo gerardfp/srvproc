@@ -216,8 +216,8 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         var start = LocalDateTime.now();
 
-        System.out.println("Generando fichero de 100Mb...");   // recuerda borrarlo !!!!
-        generateRandomFile("myfile1", 100_000_000);
+        System.out.println("Generando fichero de 100Mb...");
+        generateRandomFile("myfile1", 100_000_000); // recuerda borrarlo !!!!
 
         System.out.println("Zipeando fichero...");
         zipFile("myfile1"); // recuerda borrarlo !!!!
