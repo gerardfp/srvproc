@@ -201,7 +201,6 @@ Haz que el programa genere diversos ficheros y luego comprima cada uno de ellos.
 Comprueba que si lo hace en distintos _virtual threads_ el proceso dura menos tiempo.
 
 ```java
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -217,23 +216,23 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         var start = LocalDateTime.now();
 
-        System.out.println("Generando fichero de 100Mb...");   // recuerda borrarlo !!!!!!!!
-        generateRandomFile("fichero1", 100_000_000);
+        System.out.println("Generando fichero de 100Mb...");   // recuerda borrarlo !!!!
+        generateRandomFile("myfile1", 100_000_000);
 
         System.out.println("Zipeando fichero...");
-        zipFile("fichero1");                                  // recuerda borrarlo !!!!!!!!
+        zipFile("myfile1"); // recuerda borrarlo !!!!
 
         System.out.println("Tiempo tardado: " + ChronoUnit.MILLIS.between(start, LocalDateTime.now()));
     }
 
     public static void zipFile(String filePath) {
         try (
-                FileInputStream fis = new FileInputStream(filePath);
-                ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(filePath + ".zip"))
+                var fis = new FileInputStream(filePath);
+                var zipOut = new ZipOutputStream(new FileOutputStream(filePath + ".zip"))
         ) {
             zipOut.putNextEntry(new ZipEntry(Path.of(filePath).getFileName().toString()));
 
-            byte[] buffer = new byte[1024];
+            var buffer = new byte[1024];
             int bytesRead;
             while ((bytesRead = fis.read(buffer)) != -1) {
                 zipOut.write(buffer, 0, bytesRead);
@@ -245,8 +244,9 @@ public class Main {
     }
 
     static void generateRandomFile(String filePath, int size) {
-        try {
-            BufferedWriter bw = Files.newBufferedWriter(Path.of(filePath));
+        try (
+                var bw = Files.newBufferedWriter(Path.of(filePath))
+        ) {
             ThreadLocalRandom.current().ints(size, 32, 127)
                     .forEach(c -> {
                         try {
@@ -255,7 +255,6 @@ public class Main {
                             throw new RuntimeException(e);
                         }
                     });
-            bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
