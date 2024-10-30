@@ -192,7 +192,78 @@ public class Apipa {
 
 <br />
 
-### ⏰ Exercici 3: Chat P2P
+### 📺 Exercici 3: Zippeando
+
+El siguiente programa genera un fichero de 100Mb y luego lo comprime en ZIP.
+
+Haz que el programa genere diversos ficheros y luego comprima cada uno de ellos.
+
+Comprueba que si lo hace en distintos _virtual threads_ el proceso dura menos tiempo.
+
+```java
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
+public class Main {
+    public static void main(String[] args) throws IOException, InterruptedException {
+        var start = LocalDateTime.now();
+
+        System.out.println("Generando fichero de 100Mb...");   // recuerda borrarlo !!!!!!!!
+        generateRandomFile("fichero1", 100_000_000);
+
+        System.out.println("Zipeando fichero...");
+        zipFile("fichero1");                                  // recuerda borrarlo !!!!!!!!
+
+        System.out.println("Tiempo tardado: " + ChronoUnit.MILLIS.between(start, LocalDateTime.now()));
+    }
+
+    public static void zipFile(String filePath) {
+        try (
+                FileInputStream fis = new FileInputStream(filePath);
+                ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(filePath + ".zip"))
+        ) {
+            zipOut.putNextEntry(new ZipEntry(Path.of(filePath).getFileName().toString()));
+
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = fis.read(buffer)) != -1) {
+                zipOut.write(buffer, 0, bytesRead);
+            }
+            zipOut.closeEntry();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    static void generateRandomFile(String filePath, int size) {
+        try {
+            BufferedWriter bw = Files.newBufferedWriter(Path.of(filePath));
+            ThreadLocalRandom.current().ints(size, 32, 127)
+                    .forEach(c -> {
+                        try {
+                            bw.write(c);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+            bw.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+```
+
+### ⏰ Exercici 4: Chat P2P
 
 <img src="pub/chat_p2p.png" width=400 />
 
