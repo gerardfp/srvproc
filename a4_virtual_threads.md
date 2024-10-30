@@ -262,6 +262,8 @@ public class Main {
 }
 ```
 
+<br />
+
 ### ⏰ Exercici 4: Chat P2P
 
 <img src="pub/chat_p2p.png" width=400 />
