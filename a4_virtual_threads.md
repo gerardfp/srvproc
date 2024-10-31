@@ -201,8 +201,6 @@ Haz que el programa genere diversos ficheros y luego comprima cada uno de ellos.
 Comprueba que si lo hace en distintos _virtual threads_ el proceso dura menos tiempo.
 
 ```java
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -216,8 +214,8 @@ public class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
         var start = LocalDateTime.now();
 
-        System.out.println("Generando fichero de 100Mb...");
-        generateRandomFile("myfile1", 100_000_000); // recuerda borrarlo !!!!
+        System.out.println("Generando fichero de 100Mb...");   // recuerda borrarlo !!!!
+        generateRandomFile("myfile1", 100_000_000);
 
         System.out.println("Zipeando fichero...");
         zipFile("myfile1"); // recuerda borrarlo !!!!
@@ -227,8 +225,8 @@ public class Main {
 
     public static void zipFile(String filePath) {
         try (
-                var fis = new FileInputStream(filePath);
-                var zipOut = new ZipOutputStream(new FileOutputStream(filePath + ".zip"))
+                var fis = Files.newInputStream(Path.of(filePath));
+                var zipOut = new ZipOutputStream(Files.newOutputStream(Path.of(filePath + ".zip")))
         ) {
             zipOut.putNextEntry(new ZipEntry(Path.of(filePath).getFileName().toString()));
 
