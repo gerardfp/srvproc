@@ -1,29 +1,29 @@
-1. Producer-Consumer Problem (Bounded Buffer Problem)
+1. 📥 📤 Producer-Consumer Problem (Bounded Buffer Problem)
 
     Description: There are two types of threads: producers and consumers. Producers generate data and place it in a buffer, while consumers retrieve data from the buffer. The problem is to ensure that producers don't add data to a full buffer, and consumers don't remove data from an empty buffer, maintaining synchronization.
     Concepts: Synchronization, mutual exclusion, condition variables.
 
-2. Dining Philosophers Problem
+2. 🥢 🤓 Dining Philosophers Problem
 
     Description: Five philosophers sit around a table with five chopsticks. A philosopher must pick up both the left and right chopstick to eat. The challenge is to ensure no deadlocks (where everyone waits forever) or starvation (where some philosophers never get to eat) occur.
     Concepts: Deadlock, resource allocation, synchronization, starvation.
 
-3. Readers-Writers Problem
+3. 📖 📝 Readers-Writers Problem
 
     Description: There are multiple readers and writers accessing a shared data structure (e.g., a database). Readers can access the data concurrently, but writers require exclusive access. The problem is ensuring that readers and writers are properly synchronized to avoid inconsistent states or starvation.
     Concepts: Synchronization, mutual exclusion, starvation, fairness.
 
-4. Sleeping Barber Problem
+4. 😴 💈 Sleeping Barber Problem
 
     Description: A barber has a shop with a limited number of waiting chairs. If there are no customers, the barber sleeps. When a customer arrives, they either wake up the barber if he’s asleep or wait in a chair. If all chairs are full, the customer leaves. The challenge is coordinating the barber and customers.
     Concepts: Synchronization, mutual exclusion, condition variables.
 
-5. Cigarette Smokers Problem
+5. 😗 🚬 Cigarette Smokers Problem
 
     Description: Three smokers sit at a table. One has tobacco, one has paper, and one has matches. An agent places two of the three ingredients on the table, and the smoker with the remaining ingredient rolls and smokes a cigarette. The challenge is to synchronize the smokers and the agent.
     Concepts: Synchronization, deadlock prevention, resource sharing.
 
-6. The Elevator (Lift) Algorithm Problem
+6. 🛗 🏢 The Elevator (Lift) Algorithm Problem
 
     Description: Simulating an elevator system where requests are made to different floors. The challenge is ensuring that the elevator services requests efficiently without getting stuck in loops or starvation.
     Concepts: Scheduling, starvation, resource management.
