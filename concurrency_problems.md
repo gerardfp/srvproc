@@ -10,6 +10,8 @@ Description: Five philosophers sit around a table with five chopsticks. A philos
 
 Concepts: Deadlock, resource allocation, synchronization, starvation.
 
+![](./pub/dining_philosophers.png)
+
 ## 3. 📖 📝 Readers-Writers Problem
 
 Description: There are multiple readers and writers accessing a shared data structure (e.g., a database). Readers can access the data concurrently, but writers require exclusive access. The problem is ensuring that readers and writers are properly synchronized to avoid inconsistent states or starvation.
