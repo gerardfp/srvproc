@@ -86,7 +86,7 @@ El executor _newVirtualThreadPerTask_:
 * Cada vez que se lanza un thread con `submit()` retorna un objeto `Future` para poder manejarlo.
 
 ```java
-try (var executor = Executors.newSingleThreadExecutor()) {
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
     var future = executor.submit(() -> {
         // thread code
     });
