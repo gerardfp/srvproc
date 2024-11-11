@@ -54,6 +54,8 @@ Se asegura que, al mismo tiempo, solo podrá haber un _thread_ ejecutando una se
 
 ## Exercicis Synchronized
 
+<br />
+
 ### 🧨 Exercici 1: Counter Crash
 
 ```java
@@ -92,6 +94,62 @@ class Counter {
 
     public void decrement() {
         value--;
+    }
+}
+```
+
+<br />
+
+### ♥️♦️ vs ♠️ ♣️ Exercici2: Rojo y negro
+
+El siguiente programa lanza un _thread_ que imprime 10x10 cada símbolo del poker. Cuando descomentamos los tres _threads_ restantes, los cuatro threads empiezan a imprimir simultáneamente y se muestran
+una serie de líneas con los símbolos mezclados.
+
+Está bien que se mezclen símbolos en una línea, pero eso sí, **solo los del mismo color!!!**
+
+```java
+import java.util.concurrent.Executors;
+
+public class Main {
+    public static void main(String[] args) {
+
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            executor.submit(Main::rojoynegro);
+            executor.submit(Main::rojoynegro);
+            executor.submit(Main::rojoynegro);
+            executor.submit(Main::rojoynegro);
+        }
+    }
+
+    static void rojoynegro() {
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("♥️");
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("♠️");
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("♦️");
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                System.out.print("♣️");
+            }
+            System.out.println();
+        }
     }
 }
 ```
