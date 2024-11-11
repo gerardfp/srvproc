@@ -21,7 +21,7 @@ Sin embargo, la sincronización puede introducir nuevos tipos de errores:
 
 ## Exercicis Synchronized
 
-### Exercici 1: Counter Crash
+### 🧨 Exercici 1: Counter Crash
 
 ```java
 import java.util.concurrent.Executors;
