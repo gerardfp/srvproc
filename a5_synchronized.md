@@ -155,3 +155,49 @@ public class Main {
     }
 }
 ```
+
+### 🤡 Exercici 3: Non-performant messy database
+
+Se supone que en el fichero debería aparecer la línea "hola que tal" 100 veces...
+
+Arréglalo, pero **solo** puedes tocar el método `writeHolaquetal` y la clase `Database`.
+
+```java
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.Executors;
+
+public class Main {
+
+    static class Database {
+        static Path path = Path.of("db.sqlito");
+        
+        void write(String data) {
+            for (int i = 0; i < data.length(); i++) {
+                try {
+                    Files.writeString(path, data.substring(i, i+1), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                } catch (Exception _) {
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Files.deleteIfExists(Database.path); // fresh start
+    
+        try(var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+            for (int i = 0; i < 100; i++) {
+                executor.submit(Main::writeHolaquetal);
+            }
+        }
+        
+        Files.lines(Database.path).forEach(System.out::println); // check print
+    }
+
+    static void writeHolaquetal() {
+        Database database = new Database();
+        database.write("hola que tal\n");
+    }
+}
+```
