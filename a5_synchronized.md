@@ -58,6 +58,8 @@ Se asegura que, al mismo tiempo, solo podrá haber un _thread_ ejecutando una se
 
 ### 🧨 Exercici 1: Counter Crash
 
+Analiza este programa y corrígelo.
+
 ```java
 import java.util.concurrent.Executors;
 
