@@ -17,11 +17,11 @@ Sin embargo, la sincronización puede introducir nuevos tipos de errores:
 * 💔 [_starvation_](https://docs.oracle.com/javase/tutorial/essential/concurrency/starvelive.html)
 * 💔 [_livelock_](https://docs.oracle.com/javase/tutorial/essential/concurrency/starvelive.html)
 
-Java proporciona dos tipos básicos de sincronización: _synchronized methods_ y _synchronized statements_.
-
 <br />
 
-### Synchronized methods
+Java proporciona dos tipos básicos de sincronización: _synchronized methods_ y _synchronized statements_.
+
+### ⏩ Synchronized methods
 
 Para hacer un método sincornizado, simplemente añade la palabra clave `synchronized` en su declaración:
 
@@ -35,6 +35,20 @@ Esto tiene dos efectos:
 
 * Primero, imposibilita que dos invocaciones del método en el mismo objeto se solapen. Cuando un _thread_ está ejecutando el método de un objeto, los otros _threads_ que invocan al método del mismo objeto se bloquen hasta que el primero finalice.
 * Segundo, cuando finaliza un método `synchronized` se garantiza que los cambios en las variables del objeto serán efectivas para el resto de _threads_.
+
+<br />
+
+### ⏩ Synchronized statements
+
+La sentencia `synchronized` permite crear un bloque de código sincronizado. Se debe especificar el objeto que proporciona el bloqueo.
+
+```java
+    synchronized(object) {
+
+    }
+```
+
+Se asegura que, al mismo tiempo, solo podrá haber un _thread_ ejecutando una sentencia `synchronized` con el mismo objeto.
 
 <br />
 
