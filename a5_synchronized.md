@@ -160,25 +160,34 @@ public class Main {
 
 ### 🤡 Exercici 3: Non-performant messy database
 
-Se supone que en el fichero debería aparecer la línea "hola que tal" 100 veces...
+Esta """base de datos""" debería crear un fichero nuevo en cada nueva ejecución del programa, y se supone que en el fichero debería aparecer la línea "hola que tal" 100 veces...
 
-Arréglalo, pero **solo** puedes tocar el método `writeHolaquetal` y la clase `Database`.
+Arréglalo, pero:
+* **Solo** puedes tocar el método `writeHolaquetal` y la clase `Database`. 
+* El método `write` debe seguir escribiendo el string 'caracter a caracter' en el fichero.
 
 ```java
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 
 public class Main {
 
     static class Database {
-        static Path path = Path.of("db.sqlito");
-        
+        static Path path;
+
+        Database() {
+            path = Path.of("db.sqlito-" + LocalDateTime.now());
+            System.out.println("Database path: " + path);
+        }
+
         void write(String data) {
+            // Debe escribir el string en el fichero 'caracter a caracter'
             for (int i = 0; i < data.length(); i++) {
                 try {
-                    Files.writeString(path, data.substring(i, i+1), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+                    Files.writeString(path, data.substring(i, i + 1), StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                 } catch (Exception _) {
                 }
             }
@@ -186,15 +195,16 @@ public class Main {
     }
 
     public static void main(String[] args) throws Exception {
-        Files.deleteIfExists(Database.path); // fresh start
-    
-        try(var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+        try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
             for (int i = 0; i < 100; i++) {
                 executor.submit(Main::writeHolaquetal);
             }
         }
-        
-        Files.lines(Database.path).forEach(System.out::println); // check print
+
+        // mostrar la """base de datos""" 
+        try (var lines = Files.lines(Database.path)) {
+            System.out.println("Total: " + lines.peek(System.out::println).count() + " lineas");
+        }
     }
 
     static void writeHolaquetal() {
