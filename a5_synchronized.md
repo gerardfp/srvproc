@@ -274,7 +274,7 @@ public class Main {
         }
 
         for (int i = 0; i < 100; i++) {
-            simularMultiplesCuentas();
+            simularCienCuentas();
         }
     }
 
@@ -295,7 +295,7 @@ public class Main {
         }
     }
 
-    static void simularMultiplesCuentas() {
+    static void simularCienCuentas() {
         List<Cuenta> cuentas = IntStream.range(0, 100).mapToObj(Cuenta::new).toList();
 
         Banco banco = new Banco();
