@@ -251,11 +251,6 @@ class Cuenta {
     void restar(int cantidad) {
         fondos -= cantidad;
     }
-
-    @Override
-    public String toString() {
-        return "Cuenta " + numero + " (balance=" + fondos + ")";
-    }
 }
 
 class Banco {
