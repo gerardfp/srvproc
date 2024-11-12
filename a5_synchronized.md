@@ -223,7 +223,7 @@ El siguiente real-life-example ™️, es un sistema de transacciones de dinero 
 Hay dos simulaciones que se ejecutan cada una 100 veces:
 
 * En la primera simulación se crean dos cuentas de 500$ y se transfieren tres veces de forma simultánea 200$ de la cuenta 1 a la 2.
-* En la segundo se crean cien cuentas de 500$ y se realizan 1000 transacciones de cantidades random entre cuentas random.
+* En la segunda se crean cien cuentas de 500$ y se realizan mil transacciones de cantidades random entre cuentas random.
 
 Se supone que hay una comprobación de fondos antes de hacer la transaccion, y que una cuenta nunca debería quedarse con fondos negativos, pero como el progama no está sincronizado es un desastre.
 
