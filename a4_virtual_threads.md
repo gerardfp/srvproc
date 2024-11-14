@@ -350,13 +350,15 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Thread.startVirtualThread(() -> new Server().start());
-        Thread.sleep(1000);
-        Thread.startVirtualThread(() -> new Client().start());
+        try(var executor = Executors.newVirtualThreadPerTaskExecutor()){
+            executor.submit(()->new Server().start());
+            executor.submit(()->new Client().start());
+        }
     }
 
 
@@ -380,6 +382,7 @@ public class Main {
                     });
                 }
             } catch (Exception _) {
+                System.out.println("ERROR");
             }
         }
     }
@@ -396,6 +399,7 @@ public class Main {
                         while (true) {
                             for (int i = 1; i < 255; i++) {
                                 if (servidores[i-1] == null) {
+                                    System.out.println("Intentando conectar a 10.2.1." + i);
                                     Socket socket = new Socket("10.2.1." + i, 7777);
                                     System.out.println("Conectado al servidor " + socket);
 
@@ -404,6 +408,7 @@ public class Main {
                                     servidores[i - 1] = socketWriter;
                                 }
                             }
+                            Thread.sleep(500);
                         }
                     } catch (Exception _) {
                     }
