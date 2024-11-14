@@ -338,3 +338,90 @@ for (int i = 1; i < 50; i++) {
     }
 }
 ```
+
+
+
+SOLUCION
+
+```java
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+
+        Thread.startVirtualThread(() -> new Server().start());
+        Thread.sleep(1000);
+        Thread.startVirtualThread(() -> new Client().start());
+    }
+
+
+    static class Server {
+        void start() {
+            try {
+                ServerSocket serverSocket = new ServerSocket(7777);
+                System.out.println("Servidor iniciado " + serverSocket);
+
+                while (true) {
+                    Socket clientSocket = serverSocket.accept();
+                    System.out.println("Cliente conectado " + clientSocket);
+                    Thread.startVirtualThread(() -> {
+                        try {
+                            var socketReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+
+                            System.out.println("Esperando mensajes de " + clientSocket + "...");
+                            socketReader.lines().forEach(System.out::println);
+                        } catch (Exception _) {
+                        }
+                    });
+                }
+            } catch (Exception _) {
+            }
+        }
+    }
+
+    static class Client {
+        PrintWriter[] servidores = new PrintWriter[254];
+
+        void start() {
+            try {
+                Scanner scanner = new Scanner(System.in);
+
+                Thread.startVirtualThread(() -> {
+                    try {
+                        while (true) {
+                            for (int i = 1; i < 255; i++) {
+                                if (servidores[i-1] == null) {
+                                    Socket socket = new Socket("10.2.1." + i, 7777);
+                                    System.out.println("Conectado al servidor " + socket);
+
+                                    var socketWriter = new PrintWriter(socket.getOutputStream(), true);
+
+                                    servidores[i - 1] = socketWriter;
+                                }
+                            }
+                        }
+                    } catch (Exception _) {
+                    }
+                });
+
+                while (true) {
+                    System.out.println("Escribe un mensaje:");
+                    String mensaje = scanner.nextLine();
+                    for(var servidor: servidores) {
+                        if (servidor != null) {
+                            servidor.write(mensaje);
+                        }
+                    }
+                    System.out.println("Mensaje enviado");
+                }
+            } catch (Exception _) {
+            }
+        }
+    }
+}
+```
