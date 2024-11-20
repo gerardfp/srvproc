@@ -118,7 +118,7 @@ El siguiente programa es un gestor de libros. Permite almacenar un libro como un
 
 Tiene un método `copiarLibro` que recibe un `libroOrigen` y copia todas las páginas de ese libro (menos la portada y contraportada) al final del libro (antes de la contraportada)
 
-![](./pub/copy-book.png)
+![](./pub/copy_book.png)
 
 ```java
 import java.util.ArrayList;
