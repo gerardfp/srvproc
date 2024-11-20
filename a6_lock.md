@@ -17,7 +17,7 @@ consigue puede proseguir su ejecución por otro camino sin quedar bloqueado.
 2. Tienen la capacidad de aplicar una política de adquisición que haga un reparto justo, y que de esa forma no sea siempre el mismo thread el que adquiere un `Lock` 
 
 
-### Crear un Lock
+### 🔒 Crear un Lock
 
 * Sin política de reparto justo:
 
@@ -31,7 +31,7 @@ consigue puede proseguir su ejecución por otro camino sin quedar bloqueado.
     Lock lock = new ReentrantLock(true);
     ```
 
-### Obtener y liberar un Lock
+### 🔒 Obtener y liberar un Lock
 
 * Obtener
 
@@ -49,7 +49,7 @@ consigue puede proseguir su ejecución por otro camino sin quedar bloqueado.
     lock.unlock();
     ```
 
-### Intentar obtener un Lock
+### 🔒 Intentar obtener un Lock
 
 Para intentar obtener un Lock se llama al método `tryLock()` que devuelve `true` o `false`. El thread no se bloquea.
 
@@ -69,7 +69,7 @@ try {
 }
 ```
 
-Este patrón es más útil cuando se realiza el bloque de dos `Lock`:
+Este patrón es más útil cuando se realiza el bloqueo de dos `Lock`:
 
 ```java
 boolean lock1Adquirido = false;
@@ -88,6 +88,7 @@ try {
 ```
 
 También es habitual reintentar los bloqueos hasta que _**ambos**_ estén disponibles.
+
 ```java
 while(true) {
     boolean lock1Adquirido = false;
@@ -112,7 +113,9 @@ while(true) {
 
 ## Exercicis Lock
 
-### Exercici 1: 📚 Copybook
+<br />
+
+### 📚 Exercici 1:  Copybook
 
 El siguiente programa es un gestor de libros. Permite almacenar un libro como una lista de páginas (la primera paǵina es la portada y la última la contraportada). 
 
@@ -176,7 +179,9 @@ public class Main {
 }
 ```
 
-### Exercici 2: 🗄 Database2000
+<br /> 
+
+### 🌺 Exercici 2: Database2000
 
 La Database del siguiente programa escribe 2000 veces en una línea lo que se le indica.
 
