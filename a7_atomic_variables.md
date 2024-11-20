@@ -12,7 +12,7 @@ Las operaciónes atómicas se ejecutan de forma indivisible: no pueden ser inter
 
 Cada clase proprciona métodos para hacer las operaciones típicas según su tipo de datos.
 
-## AtomicInteger
+### ⚛️ AtomicInteger
 
 
 
