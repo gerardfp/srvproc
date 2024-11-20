@@ -116,9 +116,14 @@ while(true) {
 
 El siguiente programa es un gestor de libros. Permite almacenar un libro como una lista de páginas (la primera paǵina es la portada y la última la contraportada). 
 
-Tiene un método `copiarLibro` que recibe un `libroOrigen` y copia todas las páginas de ese libro (menos la portada y contraportada) al final del libro (antes de la contraportada)
+Tiene un método `copiarLibro` que recibe un `libroOrigen` y copia todas las páginas _no vacías_ de ese libro (menos la portada y contraportada) al final del libro (antes de la contraportada)
 
 ![](./pub/copy_book.png)
+
+¿El problema? Que como las operaciones no són sincronizadas, cuando se intentan copiar páginas simultáneamente se queda todo hecho un lío.
+
+En el caso del programa que se presenta, se intentan copiar simultáneamente las páginas del libroA en el libroB y del libroB en el libroA. El comportamiento del programa debería ser: no importa qué libro se copie primero, pero hasta que no termine una copia que no se empiece otra **con los mismos libros**.
+
 
 ```java
 import java.util.ArrayList;
@@ -171,6 +176,83 @@ public class Main {
 }
 ```
 
+### Exercici 2: 🗄 Database2000
+
+La Database del siguiente programa escribe 2000 veces en una línea lo que se le indica.
+
+En el programa se crean cuatro `Writers` cada uno con una letra asociada. 
+Cada uno de ellos tiene un bucle que manda todo el rato a la Database que escriba su letra.
+
+Se ejecutan los cuatro writers simultáneamente y se les deja trabajar durante 1 segundo.
+
+Al final, _se esperaría_ que la base de datos contuviera diversas líneas de 2000 letras: unas con la `a`, otras con `b`, con `c` y `d`.
+
+Sin embargo, como no está sincronizado el programa, obtenemos una maraña de líneas con letras mezcladas.
+
+Arréglalo para obtener lo que se espera de él.
+
+```java
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+    static class Database {
+        String data = "";
+
+        void write(String value) {
+            for (int i = 0; i < 2000; i++) {
+                this.data += value;
+            }
+            this.data += "\n";
+        }
+    }
+
+    static class Writer implements Runnable {
+        int numberOfWrites = 0;
+        final Database database;
+        final String letra;
+
+        Writer(Database database, String letra) {
+            this.database = database;
+            this.letra = letra;
+        }
+
+        @Override
+        public void run() {
+            while (true) {
+                database.write(letra);
+                numberOfWrites++;
+            }
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        var database = new Database();
+
+        var writer1 = new Writer(database, "a");
+        var writer2 = new Writer(database, "b");
+        var writer3 = new Writer(database, "c");
+        var writer4 = new Writer(database, "d");
+
+        var executor = Executors.newVirtualThreadPerTaskExecutor();
+
+        executor.submit(writer1);
+        executor.submit(writer2);
+        executor.submit(writer3);
+        executor.submit(writer4);
+
+        executor.awaitTermination(1, TimeUnit.SECONDS);
+
+        System.out.println(database.data);
+
+        System.out.println(writer1.numberOfWrites);
+        System.out.println(writer2.numberOfWrites);
+        System.out.println(writer3.numberOfWrites);
+        System.out.println(writer4.numberOfWrites);
+    }
+}
+
+```
 
 
 
