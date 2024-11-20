@@ -112,14 +112,20 @@ while(true) {
 
 ## Exercicis Lock
 
-### Exercici 1: 
+### Exercici 1: 📚 Copybook
+
+El siguiente programa es un gestor de libros. Permite almacenar un libro como una lista de páginas (la primera paǵina es la portada y la última la contraportada). 
+
+Tiene un método `copiarLibro` que recibe un `libroOrigen` y copia todas las páginas de ese libro (menos la portada y contraportada) al final del libro (antes de la contraportada)
+
+![](./pub/copy-book.png)
 
 ```java
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
-public class Deadlock {
+public class Main {
 
     static class Libro {
         ArrayList<String> paginas;
@@ -128,7 +134,7 @@ public class Deadlock {
             this.paginas = new ArrayList<>(paginas);
         }
 
-        void insertarPaginas(Libro libroOrigen) {
+        void copiarPaginas(Libro libroOrigen) {
             for (String pagina : libroOrigen.obtenerPaginasInterioresNoVacias()) {
                 int penultimaPosicion = Math.max(0, this.paginas.size() - 1);
                 this.paginas.add(penultimaPosicion, pagina);
@@ -153,8 +159,8 @@ public class Deadlock {
             final Libro libroB = new Libro(List.of("Portada-B", "B1", "B2", "B3", "", "B4", "Contraportada-B"));
 
             try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
-                executor.submit(() -> libroA.insertarPaginas(libroB));
-                executor.submit(() -> libroB.insertarPaginas(libroA));
+                executor.submit(() -> libroA.copiarPaginas(libroB));
+                executor.submit(() -> libroB.copiarPaginas(libroA));
             }
 
             System.out.println(libroA.paginas);
