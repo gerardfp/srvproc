@@ -179,6 +179,29 @@ public class Main {
 }
 ```
 
+Cuando el programa imprime las pàginas del `libroA` y del `libroB`, solo deberían aparecer líneas así:
+```
+Libro A: [Portada-A, A1, A2, , A3, A4, B1, B2, B3, B4, Contraportada-A]
+Libro B: [Portada-B, B1, B2, B3, , B4, A1, A2, A3, A4, B1, B2, B3, B4, Contraportada-B]
+```
+O así:
+```
+Libro A: [Portada-A, A1, A2, , A3, A4, B1, B2, B3, B4, A1, A2, A3, A4, Contraportada-A]
+Libro B: [Portada-B, B1, B2, B3, , B4, A1, A2, A3, A4, Contraportada-B]
+```
+
+En el primer caso primero se copió el B en el A, y luego el A en el B.
+En el segundo, primero se copió el A al B, y luego el B al A.
+
+<br />
+
+Si aparecen líneas así:
+```
+Libro A: [Portada-A, A1, A2, , A3, A4, B1, B2, B3, B4, Contraportada-A]
+Libro B: [Portada-B, B1, B2, B3, , B4, Contraportada-B]
+```
+Significaría que solo se copió el libro B en el A.
+
 <br /> 
 
 ### 🌺 Exercici 2: Database2000
