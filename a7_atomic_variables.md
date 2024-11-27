@@ -115,13 +115,16 @@ Crea una clase para gestionar actualizaciones de un perfil de usuario.
 
     * Implementa los métodos:
         * `updateProfile(String newName, int newAge)`:
-         Usa `set()` para actualizar el perfil, *creando una nueva instancia* de `UserProfile` con los valores proporcionados.
+
+        Usa `set()` para actualizar el perfil, *creando una nueva instancia* de `UserProfile` con los valores proporcionados.
 
         * `updateProfile(String expectedName, String newName, int newAge)`:
-         User `getAndUpdate()` para actualizar el perfil solo si el nombre actual coincide con el paràmatro `expectedName`
+        
+        User `getAndUpdate()` para actualizar el perfil solo si el nombre actual coincide con el paràmatro `expectedName`
     
         * `udpateProfile(UserProfile expected, UserProfile newProfile)`:
-            Usa `compareAndSet()` para intentar cambiar el perfil actual solo si coincide con el perfil esperado (`expected`).
+        
+        Usa `compareAndSet()` para intentar cambiar el perfil actual solo si coincide con el perfil esperado (`expected`).
 
 * En el programa principal, simula una actualización concurrente con múltiples hilos, usando los diferentes métodos de actualización. Cada hilo debe mostrar las operaciones realizadas.
 
