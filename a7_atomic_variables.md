@@ -102,7 +102,7 @@ Simula un sistema para controlar el número máximo de usuarios simultáneos con
 
 <br />
 
-### Exercici 4: 🗣 Actualizar perfil
+### 🗣 Exercici 4:  Actualizar perfil
 
 Crea una clase para gestionar actualizaciones de un perfil de usuario.
 
@@ -129,7 +129,7 @@ Crea una clase para gestionar actualizaciones de un perfil de usuario.
 
 <br />
 
-### Exercici 5: 🧎🏽‍♀️ TaskState
+### 🧎🏽‍♀️ Exercici 5: TaskState
 
 Implementa la gestión del estado de una tarea. Los posible estados son `INIT`, `PROCESSING` y `COMPLETED`.
 
