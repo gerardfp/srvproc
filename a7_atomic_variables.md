@@ -127,6 +127,8 @@ Crea una clase para gestionar actualizaciones de un perfil de usuario.
 
 * Al final, imprime el estado final del perfil.
 
+<br />
+
 ### Exercici 5: 🧎🏽‍♀️ TaskState
 
 Implementa la gestión del estado de una tarea. Los posible estados son `INIT`, `PROCESSING` y `COMPLETED`.
