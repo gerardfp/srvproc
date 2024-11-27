@@ -125,7 +125,7 @@ Tiene un método `copiarLibro` que recibe un `libroOrigen` y copia todas las pá
 
 ¿El problema? Que como las operaciones no són sincronizadas, cuando se intentan copiar páginas simultáneamente se queda todo hecho un lío.
 
-En el caso del programa que se presenta, se intentan copiar simultáneamente las páginas del libroA en el libroB y del libroB en el libroA. El comportamiento del programa debería ser: no importa qué libro se copie primero, pero hasta que no termine una copia que no se empiece otra **con los mismos libros**.
+En el caso del programa que se presenta, se intentan copiar simultáneamente las páginas del `libroA` en el `libroB` y del `libroB` en el `libroA. El comportamiento del programa debería ser: no importa qué libro se copie primero, pero hasta que no termine una copia que no se empiece otra **con los mismos libros**.
 
 
 ```java
