@@ -12,8 +12,17 @@ Las operaciónes atómicas se ejecutan de forma indivisible: no pueden ser inter
 
 Cada clase proprciona métodos para hacer las operaciones típicas según su tipo de datos.
 
-### ⚛️ AtomicInteger
+### ⚛️ AtomicInteger 
 
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html
+
+### ⚛️ AtomicLong
+
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicLong.html
+
+### ⚛️ AtomicRefrence 
+
+https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReference.html
 
 
 <br />
