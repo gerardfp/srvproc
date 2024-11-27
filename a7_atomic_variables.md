@@ -107,8 +107,8 @@ Simula un sistema para controlar el número máximo de usuarios simultáneos con
 Crea una clase para gestionar actualizaciones de un perfil de usuario.
 
 * En primer lugar crea un record `UserProfile` con:
-        * Un atributo `String` para el nombre.
-        * Un atributo `int` para la edad.
+    * Un atributo `String` para el nombre.
+    * Un atributo `int` para la edad.
 
 
 * Diseña una clase `UserProfileUpdater` que contenga un atributo `AtomicReference<UserProfile>` inicializado con un perfil de usuario de ejemplo como `new UserProfile("Juan Doe", 25)`.
