@@ -16,6 +16,15 @@ Cada clase proprciona métodos para hacer las operaciones típicas según su tip
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html
 
+* `int incrementAndGet()`: incrementa en uno el valor actual y retorna el valor actualizado
+
+* `int getAndUpdate(IntUnaryOperator updateFunction)`: actualiza el valor actual con el resultado de aplicar la función, y retorna el valor previo.
+
+* `int UpdateAndGet(IntUnaryOperator updateFunction)`: actualiza el valor actual con el resultado de aplicar la función, y retorna el valor actualizado.
+
+* `boolean compareAndSet(int expect, int update)`: establece el valor a `update` si el valor actual == `expect`
+
+
 ### ⚛️ AtomicLong
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicLong.html
