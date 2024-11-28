@@ -29,10 +29,13 @@ https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInte
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicLong.html
 
+Igual que el anterior, pero con `long`
+
 ### ⚛️ AtomicRefrence 
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicReference.html
 
+Igual, pero con objetos.
 
 <br />
 
