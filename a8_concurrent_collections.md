@@ -31,7 +31,7 @@ Estas colecciones ayudan a evitar errores de consistencia de memoria cuando son 
 
 
 
-### ConcurrentHashMap
+### 🏮 ConcurrentHashMap
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html
 
