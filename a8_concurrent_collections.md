@@ -73,6 +73,8 @@ uva: 16
 naranja: 38
 ```
 
+<br />
+
 ### 🏨 Exercici 2: Reservas
 
 Implementa un sistema de reservas para habitaciones de un hotel. Los usuarios deben poder reservar habitaciones de manera concurrente. La aplicación debe garantizar que las reservas en una misma habitación no se solapen.
@@ -87,4 +89,12 @@ Implementación:
 * Implementa un método que permita reservar una habitación en una franja horaria y un usuario. Este método debe retornar `true` o `false`, según si la reserva se pudo realizar o no.
 * Haz un programa principal que simule solicitudes concurrentes de reserva (con diversas habitaciones, usuarios y franjas) y comprueba que no se solapan las reservas.
 
+<br />
+
+
 ### 🎎 Exercici 3: Grupos de chat
+
+// TODO
+
+
+Cada grupo que contactos tiene
