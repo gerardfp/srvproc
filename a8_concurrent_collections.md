@@ -110,6 +110,7 @@ Programa un sistema para gestionar grupos de chat de forma concurrente. El siste
         Si el usuario no pertenecía al grupo retorna `false`
 
     * `boolean deleteGroup(String group)` 
+    
         Elimina un grupo. 
         
         Si el grupo no existía retorna `false`
