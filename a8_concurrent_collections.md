@@ -94,7 +94,24 @@ Implementación:
 
 ### 🎎 Exercici 3: Grupos de chat
 
-// TODO
+Programa un sistema para gestionar grupos de chat de forma concurrente. El sistema debe permitir añadir/eliminar grupos, y añadir/eliminar usuarios a dichos grupos. Los grupos y usuarios se identifican por su nombre.
+
+Crea la clase `GroupsManager` con los siguientes métodos:
+* `boolean addUserToGroup(String user, String group)`: añade un usuario a un grupo, si el grupo no existe lo crea. Si el usuario ya pertenecia al grupo retorna `false`
+* `boolean removeUserFromGroup(String user, String group)`: quita a un usuario de un grupo, si el grupo queda vacío, lo elimina. Si el usuario no pertenecía al grupo retorna `false`
+* `boolean deleteGroup(String group)`: elimina un grupo. Si el grupo no existía retorna `false`
+
+Luego haz una simulación en el `main` donde diversos _threads_ van añadiendo y quitando usuarios de grupos _random_ :
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        var users = List.of("usera", "userb", "userc", "userd", "usere", "userf", "userg", "userf");
+        var groups = List.of("group1", "group2", "group3", "group4");
 
 
-Cada grupo que contactos tiene
+        // anyade y quita usuarios random de los grupos en diversos threads
+    }
+}
+```
