@@ -96,12 +96,25 @@ Implementación:
 
 Programa un sistema para gestionar grupos de chat de forma concurrente. El sistema debe permitir añadir/eliminar grupos, y añadir/eliminar usuarios a dichos grupos. Los grupos y usuarios se identifican por su nombre.
 
-Crea la clase `GroupsManager` con los siguientes métodos:
-* `boolean addUserToGroup(String user, String group)`: añade un usuario a un grupo, si el grupo no existe lo crea. Si el usuario ya pertenecia al grupo retorna `false`
-* `boolean removeUserFromGroup(String user, String group)`: quita a un usuario de un grupo, si el grupo queda vacío, lo elimina. Si el usuario no pertenecía al grupo retorna `false`
-* `boolean deleteGroup(String group)`: elimina un grupo. Si el grupo no existía retorna `false`
+1. Crea la clase `GroupsManager` con los siguientes métodos:
+    * `boolean addUserToGroup(String user, String group)`
 
-Luego haz una simulación en el `main` donde diversos _threads_ van añadiendo y quitando usuarios de grupos _random_ :
+        Añade un usuario a un grupo, si el grupo no existe lo crea. 
+
+        Si el usuario ya pertenecia al grupo retorna `false`
+
+    * `boolean removeUserFromGroup(String user, String group)`
+
+        Quita a un usuario de un grupo, si el grupo queda vacío, lo elimina. 
+
+        Si el usuario no pertenecía al grupo retorna `false`
+
+    * `boolean deleteGroup(String group)` 
+        Elimina un grupo. 
+        
+        Si el grupo no existía retorna `false`
+
+1. Haz una simulación en el `main` donde diversos _threads_ van añadiendo y quitando usuarios de grupos _random_ :
 
 ```java
 public class Main {
