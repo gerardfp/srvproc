@@ -173,7 +173,7 @@ record Mensaje (String text,LocalDateTime date){
 
 ### 🤼‍♀️ Exercici 6: Gestor de tareas colaborativo
 
-
+// TODO
 
 ```java
 record Tarea(String description, AtomicReference<State> state) {
