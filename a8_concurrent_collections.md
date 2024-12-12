@@ -162,7 +162,7 @@ Comprueba que el número de mensajes se mantiene alrededor del número de usuari
 Puedes usar el siguiente `record` para almacenar un mensaje:
 
 ```java
-record Mensaje (String text,LocalDateTime date){
+record Mensaje (String text, LocalDateTime date){
     public Mensaje(String text) {
         this(text, LocalDateTime.now());
     }
