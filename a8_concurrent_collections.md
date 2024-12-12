@@ -129,3 +129,60 @@ public class Main {
     }
 }
 ```
+
+<br />
+
+### 🤪 Exercici 4: new WrongList<>()
+
+Haz un progama que cree dos _threads_ y cada uno de ellos añada un string a un `ArrayList`. Demuestra que pueden ocurrir _race conditions_ (aka interferencia de hilos).
+
+Corrige el programa utilizando un `CopyOnWriteArrayList`.
+
+<br />
+
+### 🫂 Exercici 5: Messenger
+
+Diseña un sistema para el procesamiento y almacenamiento de mensajes para una aplicación de mensajería.
+
+Cada conexión de usuario se maneja un _thread_, y los mensajes enviados se almacenan en una lista compartida. De esa manera, la lista puede ser accedida por varios _threads_ simultáneamente. Además, hay un _thread_ de servicio que revisa la lista permanentemente y elimina los mensajes antiguos. 
+
+Realiza un simulación del sistema:
+
+* Lanza diversos _threads_ que simulen las conexiones de usuario. Cada _thread_ debe ir "enviando" (añadir a la lista) mensajes aleatorios a intervalos de tiempo aleatorios entre 2 y 4 segundos, y obtener los mensajes cuando se añada un mensaje a la lista (simplemente imprimir el número de mensajes es suficiente).
+
+* Por otra parte, lanza el thread de servicio que cada 100 milisegundos revise los mensajes y elimine los que sean más antiguos a 3 segundos.
+
+
+Comprueba que el número de mensajes se mantiene alrededor del número de usuarios (ya que cada usuario los envia cada 2-4 segundos y se eliminan a los 3 segundos).
+
+Puedes usar el siguiente `record` para almacenar un mensaje:
+
+```java
+record Mensaje (String text,LocalDateTime date){
+    public Mensaje(String text) {
+        this(text, LocalDateTime.now());
+    }
+}
+```
+
+<br />
+
+### 🤼‍♀️ Exercici 6: Gestor de tareas colaborativo
+
+
+
+```java
+record Tarea(String description, AtomicReference<State> state) {
+    enum State {
+        TODO, IN_PROGRESS, DONE
+    }
+
+    public Tarea(String text) {
+        this(text, new AtomicReference<>(Tarea.State.TODO));
+    }
+
+    void setState(State newState) {
+        
+    }
+}
+```
