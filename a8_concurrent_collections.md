@@ -114,7 +114,7 @@ Programa un sistema para gestionar grupos de chat de forma concurrente. El siste
         Si el usuario no pertenecía al grupo retorna `false`
 
     * `boolean deleteGroup(String group)` 
-    
+
         Elimina un grupo. 
         
         Si el grupo no existía retorna `false`
@@ -171,18 +171,18 @@ record Mensaje (String text, LocalDateTime date){
 
 <br />
 
-### 🤼‍♀️ Exercici 6: Gestor de tareas colaborativo
+### 🤼‍♀️ Exercici 6: Lista de la compra colaborativa
 
-// TODO
+* Un thread debe ir añadiendo items
 
 ```java
-record Tarea(String description, AtomicReference<State> state) {
+record Item(String description, AtomicReference<State> state) {
     enum State {
-        TODO, IN_PROGRESS, DONE
+        CHECKED, UNCHECKED
     }
 
-    public Tarea(String text) {
-        this(text, new AtomicReference<>(Tarea.State.TODO));
+    public Item(String description) {
+        this(description, new AtomicReference<>(Tarea.State.UNCHECKED));
     }
 
     void setState(State newState) {
