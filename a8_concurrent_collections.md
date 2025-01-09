@@ -35,6 +35,10 @@ Estas colecciones ayudan a evitar errores de consistencia de memoria cuando son 
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html
 
+* putIfAbsent
+* compute
+
+
 ### 🏮 CopyOnWriteArrayList
 
 https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CopyOnWriteArrayList.html
