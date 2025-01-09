@@ -125,7 +125,7 @@ Programa un sistema para gestionar grupos de chat de forma concurrente. El siste
 public class Main {
     public static void main(String[] args) {
 
-        var users = List.of("usera", "userb", "userc", "userd", "usere", "userf", "userg", "userf");
+        var users = List.of("usera", "userb", "userc", "userd", "usere", "userf", "userg", "userh");
         var groups = List.of("group1", "group2", "group3", "group4");
 
 
