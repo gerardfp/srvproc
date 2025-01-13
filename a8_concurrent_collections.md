@@ -199,3 +199,26 @@ record Item(String description, AtomicReference<State> state) {
     }
 }
 ```
+
+### 🎁 Exercici 7: Inventario de productos
+
+```mermaid
+classDiagram
+
+    class Producto {
+        + int id
+        + String nombre
+        + int stock
+        + aumentarStock(cantidad)
+        + disminuirStock(cantidad)
+    }
+```
+
+* Utiliza un `record` para definir un Producto
+    * El `id` debe ser autoincrementado. Utiliza un campo `static` para almacenar el último _id_ utilizado. Increméntalo en el constructor antes de utilizarlo para asignarlo a un producto.
+
+* Inicializa el inventario con 5 productos
+* Un hilo debe mostrar periódicamente el inventario
+* Múltiples hilos deben simular la compra de un producto aleatorio, reduciendo su _stock_
+* Múltiples hilos deben simular la reposición de un producto aleatorio, aumentando su _stock_
+
