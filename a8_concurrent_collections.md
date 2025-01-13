@@ -1,6 +1,6 @@
 # Concurrent collections
 
-* [Exercicis Concurrent collections](#exercicis-concurrent-collecions)
+* [Exercicis Concurrent collections](#exercicis-concurrent-collections)
 
 ## Overview
 
