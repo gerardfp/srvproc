@@ -200,6 +200,8 @@ record Item(String description, AtomicReference<State> state) {
 }
 ```
 
+<br />
+
 ### 🎁 Exercici 7: Inventario de productos
 
 ```mermaid
