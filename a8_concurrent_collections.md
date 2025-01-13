@@ -177,7 +177,12 @@ record Mensaje (String text, LocalDateTime date){
 
 ### 🤼‍♀️ Exercici 6: Lista de la compra colaborativa
 
-* Un thread debe ir añadiendo items
+* Un thread debe ir añadiendo items, hasta un máximo de 10. El nombre debe ser _random_
+* Un thread debe ir cambiando el estado de un item _random_ de la lista.
+* Un thread debe ir eliminando items _random_
+* Un thread debe mostar la lista de items
+
+Analiza posibles condiciones de carrera y propón métodos para prevenirlas.
 
 ```java
 record Item(String description, AtomicReference<State> state) {
@@ -186,11 +191,11 @@ record Item(String description, AtomicReference<State> state) {
     }
 
     public Item(String description) {
-        this(description, new AtomicReference<>(Tarea.State.UNCHECKED));
+        this(description, new AtomicReference<>(Item.State.UNCHECKED));
     }
 
     void setState(State newState) {
-        
+        state.set(newState);
     }
 }
 ```
