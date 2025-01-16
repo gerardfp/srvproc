@@ -1,6 +1,6 @@
-# Server Socket
+# ServerSocket
 
-* [Exercicis Server Socket](#exercicis-server-socket)
+* [Exercicis ServerSocket](#exercicis-serversocket)
 
 ## Overview
 
@@ -13,5 +13,7 @@ Un socket es un enlace de comunicación bidireccional entre dos programas que ej
 Cada programa solicita un número de **puerto** al kernel, y de esta forma el kernel conoce a qué programa debe enviar los paquetes, ya que cada paquete lleva asociado un número de puerto al que se envían.
 
 
+<br />
 
+## Exercicis ServerSocket
 
