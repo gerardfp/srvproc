@@ -35,7 +35,7 @@ Socket socket = server.accept();
 
 ### 🌐 Escribir datos en el socket (enviar)
 
-Dependiendo del tipo de datos que queramos enviar (bytes, Strings, datos primitivos, objetos, ), existen distintos métodos. Para enviar Strings el más común es usar un `PrintWriter`
+Dependiendo del tipo de datos que queramos enviar (bytes, Strings, datos primitivos, objetos, ... ), existen distintos métodos. Para enviar Strings el más común es usar un `PrintWriter`
 
 ```java
 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
@@ -51,7 +51,7 @@ writer.println("This is the data");
 
 ### 🦫 Exercici 1
 
-Crea un simple servidor con `ServerSocket` que _repetidamente_ accepte una conexión, envie el texto "Hola mundo", y cierre la conexión.
+Crea un simple servidor con `ServerSocket` que _repetidamente_ accepte una conexión, envie el texto "Hola, mundo", y cierre la conexión.
 
 ```mermaid
 graph TD
