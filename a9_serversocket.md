@@ -113,4 +113,4 @@ Comprueba que ahora el segundo cliente no debe esperar 10 segundos a recibir una
 
 ### 🦇 Exercici 3
 
-Programa un chat, básico, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Deberéis programar algún tipo de mensaje especial, que cuando es recibido envia una respuesta automática.
+Programa un chat, _básico_, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Deberéis programar algún tipo de mensaje especial, que cuando es recibido envia una respuesta automática.
