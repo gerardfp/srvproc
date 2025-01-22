@@ -38,12 +38,32 @@ Socket socket = server.accept();
 Dependiendo del tipo de datos que queramos enviar (bytes, Strings, datos primitivos, objetos, ... ), existen distintos métodos. Para enviar Strings el más común es usar un `PrintWriter`
 
 ```java
-PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-writer.println("This is the data");
+PrintWriter socketWriter = new PrintWriter(socket.getOutputStream(), true);
+socketWriter.println("This is the data");
 ```
 * *El writer debe ser cerrado cuando se desee finalizar la conexión*.
 
+### 🌐 Leer datos del socket (recibir)
 
+Para leer líneas de texto de un socket se puede usar un `BufferedReader`, así:
+
+```java
+var socketReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+socketReader.lines();     // Stream<String>
+socketReader.readLine();  // String
+```
+
+
+### 🌐 Conectar a un servidor
+
+Un programa **cliente** puede usar la clase `Socket` para iniciar una conexión con un servidor. Hay diversos constructores; uno de ellos es `Socket(String host, int port)`:
+
+```java
+Socket socket = new Socket("15.6.17.18", 7000);
+```
+
+Una vez establecida la conexión se pueden usar `PrintWriter` o un `BufferedReader` para comunicarse con el servidor.
 
 <br />
 
