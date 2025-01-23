@@ -23,6 +23,8 @@ Se crea una instancia de `ServerSocket` pasando el número de puerto solicitado.
 ServerSocket server = new ServerSocket(8080); 
 ```
 
+<br />
+
 ### 🌐 Aceptar una conexión
 
 La llamada al método `accept()` bloquea el programa hasta que llegue una conexión de un cliente. Retorna un objeto `Socket` que se puede usar para recibir o enviar datos.
@@ -33,6 +35,8 @@ Socket socket = server.accept();
 
 * *El socket debe ser cerrado cuando se desee finalizar la conexión*.
 
+<br />
+
 ### 🌐 Escribir datos en el socket (enviar)
 
 Dependiendo del tipo de datos que queramos enviar (bytes, Strings, datos primitivos, objetos, ... ), existen distintos métodos. Para enviar Strings el más común es usar un `PrintWriter`
@@ -42,6 +46,8 @@ PrintWriter socketWriter = new PrintWriter(socket.getOutputStream(), true);
 socketWriter.println("This is the data");
 ```
 * *El writer debe ser cerrado cuando se desee finalizar la conexión*.
+
+<br />
 
 ### 🌐 Leer datos del socket (recibir)
 
@@ -54,6 +60,7 @@ socketReader.lines();     // Stream<String>
 socketReader.readLine();  // String
 ```
 
+<br />
 
 ### 🌐 Conectar a un servidor
 
