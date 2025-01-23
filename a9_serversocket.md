@@ -113,4 +113,43 @@ Comprueba que ahora el segundo cliente no debe esperar 10 segundos a recibir una
 
 ### 🦇 Exercici 3
 
-Programa un chat, _básico_, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Deberéis programar algún tipo de mensaje ✨especial✨, que cuando es recibido envia una respuesta automática.
+Programa un chat, _básico_, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Ambos, cliente y servidor, deberéis programar algún tipo de mensaje ✨especial✨, que cuando es recibido envia una respuesta automática.
+
+```mermaid
+graph LR
+    subgraph Alumno 1
+        A1["Cliente (Consola)"]
+    end
+    
+    subgraph Alumno 2
+        B1["Servidor (Consola)"]
+    end
+    
+    A1 ---|Conexión| B1
+    B1 <-->|Mensajes| A1
+```
+
+### 🦇 Exercici 3
+
+Programa un chat, _algo menos básico_, con tu compañero de clase. 
+
+Los dos seréis clientes, y os comunicaréis a través de un servidor.
+
+```mermaid
+graph LR
+    subgraph Alumno 1
+        A1["Cliente (Consola)"]
+    end
+    
+    subgraph Alumno 2
+        B1[Servidor]
+
+        B2["Cliente (Consola)"]
+    end
+    
+    A1 ---|Conexión| B1
+    B1 <-->|Mensajes| A1
+
+    B2 ---|Conexión| B1
+    B1 <-->|Mensajes| B2
+```
