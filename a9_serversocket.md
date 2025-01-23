@@ -129,7 +129,9 @@ graph LR
     B1 <-->|Mensajes| A1
 ```
 
-### 🦇 Exercici 3
+<br />
+
+### 🦇 Exercici 4
 
 Programa un chat, _algo menos básico_, con tu compañero de clase. 
 
@@ -152,4 +154,53 @@ graph LR
 
     B2 ---|Conexión| B1
     B1 <-->|Mensajes| B2
+```
+
+<br />
+
+### 👊👋✌️Rock, Paper, Network
+
+Programa el juego Piedra-papel-tijeras en red. 
+Dos clientes conectaran a un servidor, e iran enviando sus manos. El servidor comprobara quien gana e irá enviando los resultados.
+
+Servidor:
+
+```mermaid
+graph TD
+    A[Iniciar servidor] --> B["Aceptar conexión P1<br> Abrir reader y writer"]
+    B --> C["Enviar a P1<br>'Waiting for player2...'"]
+    C --> D[Aceptar conexión P2<br> Abrir reader y writer]
+    D --> E["Enviar a AMBOS<br>'GAME START'"]
+
+    E --> F[Inicializar puntajes:<br> winsP1 = 0, winsP2 = 0]
+    F --> G[Bucle infinito]
+    G --> H["Enviar a AMBOS<br>👊 Piedra (1), 👋 Papel (2), ✌️ Tijeras (3)"]
+    H --> I[Recibir manoP1 y manoP2]
+
+    I --> J{Evaluar<br>manoP1 vs manoP2}
+    J -->|P1 gana| K[winsP1++<br>]
+    K --> L[Enviar a AMBOS<br>'You win / You loose'] 
+    J --> |P2 gana| M[winsP2++]
+    M --> N[Enviar a AMBOS<br>'You win / You loose'] 
+    J -->|Empate| O["Enviar a AMBOS<br>'Empate'"]
+
+    L --> P
+    N --> P
+    O --> P[Enviar a AMBOS<br>winsP1 - winsP2]
+    P --> G
+```
+
+Clientes:
+
+```mermaid
+graph TD
+    A[Conectar al servidor] --> B["Abrir reader y writer"]
+    B --> C[Bucle infinito]
+    C --> D[Recibir mensaje del servidor]
+    D --> E[Imprimir mensaje por pantalla]
+    E --> F{El mensaje es el de sacar mano?}
+    F --> |Si| G[Leer mano del teclado]
+    G --> H[Enviar mano al servidor]
+    H --> C
+    F --> |No| C
 ```
