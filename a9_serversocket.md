@@ -60,6 +60,8 @@ socketReader.lines();     // Stream<String>
 socketReader.readLine();  // String
 ```
 
+* *El reader debe ser cerrado cuando se desee finalizar la conexión*.
+
 <br />
 
 ### 🌐 Conectar a un servidor
@@ -72,6 +74,8 @@ Socket socket = new Socket("15.6.17.18", 7000);
 
 Una vez establecida la conexión se pueden usar `PrintWriter` o un `BufferedReader` para comunicarse con el servidor.
 
+* *El socket, el writer y el reader deben ser cerrados cuando se desee finalizar la conexión*.
+  
 <br />
 
 ## Exercicis ServerSocket
