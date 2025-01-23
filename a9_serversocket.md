@@ -69,7 +69,7 @@ Una vez establecida la conexión se pueden usar `PrintWriter` o un `BufferedRead
 
 ## Exercicis ServerSocket
 
-### 🦫 Exercici 1
+### 🦫 Exercici 1: Wait, wait, Firefox
 
 Crea un simple servidor con `ServerSocket` que _repetidamente_ accepte una conexión, envie el texto "Hola, mundo", y cierre la conexión.
 
@@ -91,7 +91,7 @@ Añade un `sleep` de 5 segundos antes de enviar el texto. Luego, conecta desde d
 
 <br />
 
-### 🦖 Exercici 2
+### 🦖 Exercici 2: Wait, Firefox
 
 Añade _multithreading_ al ejercicio anterior. Cuando se acepte la conexión de un cliente, el envío de datos se manejará en un _thread_. 
 
@@ -111,7 +111,7 @@ Comprueba que ahora el segundo cliente no debe esperar 10 segundos a recibir una
 
 <br />
 
-### 🦇 Exercici 3
+### 🦇 Exercici 3: Chat Server <-> Client
 
 Programa un chat, _básico_, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Ambos, cliente y servidor, deberéis programar algún tipo de mensaje ✨especial✨, que cuando es recibido envia una respuesta automática.
 
@@ -131,7 +131,7 @@ graph LR
 
 <br />
 
-### 🦇 Exercici 4
+### 🦇 Exercici 4: Chat Client <-> Server <-> Client
 
 Programa un chat, _algo menos básico_, con tu compañero de clase. 
 
@@ -158,12 +158,12 @@ graph LR
 
 <br />
 
-### 👊👋✌️Rock, Paper, Network
+### 👊👋✌️ Exercici 5: Rock, Paper, Network
 
 Programa el juego Piedra-papel-tijeras en red. 
 Dos clientes conectaran a un servidor, e iran enviando sus manos. El servidor comprobara quien gana e irá enviando los resultados.
 
-Servidor:
+**Servidor:**
 
 ```mermaid
 graph TD
@@ -190,7 +190,7 @@ graph TD
     P --> G
 ```
 
-Clientes:
+**Clientes:**
 
 ```mermaid
 graph TD
