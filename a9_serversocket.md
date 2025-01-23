@@ -174,7 +174,7 @@ graph TD
 
     E --> F[Inicializar puntajes:<br> winsP1 = 0, winsP2 = 0]
     F --> G[Bucle infinito]
-    G --> H["Enviar a AMBOS<br>👊 Piedra (1), 👋 Papel (2), ✌️ Tijeras (3)"]
+    G --> H["Enviar a AMBOS<br>Sacar mano:<br>👊 Piedra (1), 👋 Papel (2), ✌️ Tijeras (3)"]
     H --> I[Recibir manoP1 y manoP2]
 
     I --> J{Evaluar<br>manoP1 vs manoP2}
