@@ -186,7 +186,7 @@ graph TD
 
     L --> P
     N --> P
-    O --> P[Enviar a AMBOS<br>winsP1 - winsP2]
+    O --> P[Enviar a AMBOS<br>winsP1 / winsP2]
     P --> G
 ```
 
