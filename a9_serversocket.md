@@ -20,8 +20,10 @@ Para iniciar un servidor en un programa Java se puede usar la clase `java.net.Se
 Se crea una instancia de `ServerSocket` pasando el número de puerto solicitado. Si el puerto está en uso lanza una excepción. (Los puertos 1 a 1023 se deben solicitar como _root_).
 
 ```java
-ServerSocket server = new ServerSocket(8080); 
+ServerSocket serverSocket = new ServerSocket(8080); 
 ```
+
+* *El serverSocket debe ser cerrado cuando se desee dejar de aceptar conexiones*.
 
 <br />
 
@@ -30,7 +32,7 @@ ServerSocket server = new ServerSocket(8080);
 La llamada al método `accept()` bloquea el programa hasta que llegue una conexión de un cliente. Retorna un objeto `Socket` que se puede usar para recibir o enviar datos.
 
 ```java
-Socket socket = server.accept();
+Socket socket = serverSocket.accept();
 ```
 
 * *El socket debe ser cerrado cuando se desee finalizar la conexión*.
