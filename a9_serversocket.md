@@ -7,11 +7,14 @@
 https://docs.oracle.com/en/java/javase/23/security/java-cryptography-architecture-jca-reference-guide.html
 
 
-### Base64
+### 🔐 Base64
 
 ```java
 // String to byte[]
 byte[] bytes = "un texto".getBytes();
+
+// byte[] to String
+String texto = new String(bytes);
 
 // byte[] --> Base64
 String enBase64 = Base64.getEncoder().encodeToString(bytes);
@@ -21,25 +24,32 @@ byte[] bytes = Base64.getDecoder().decode(enBase64);
 
 ```
 
-### 🌐 MessageDigest
+### 🔐 SecureRandom
 
 ```java
-String message = "Los datos a hashear";
+SecureRandom random = new SecureRandom();
+byte[] store = new byte[16];
+random.nextBytes(store);
+```
+
+### 🔐 MessageDigest
+
+```java
 MessageDigest md = MessageDigest.getInstance("SHA-256");
-byte[] hashedBytes = md.digest(message.getBytes());
-String hash = Base64.getEncoder().encodeToString(hashedBytes);
+byte[] hashedBytes = md.digest(bytes);
 ```
 
 <br />
 
-### KeyGenerator
+### 🔐 KeyGenerator
+
 ```java
 KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
 keyGenerator.init(256);
 SecretKey secretKey =  keyGenerator.generateKey();
 ```
 
-### KeyPairGenerator
+### 🔐 KeyPairGenerator
 
 ```java
 KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
@@ -50,203 +60,107 @@ PrivateKey privateKey = keypair.getPrivate();
 PublicKey publicKey = keypair.getPublic();
 ```
 
-### 🌐 Signature
-
+### 🔐 Signature
 
 ```java
-byte[] data = "Datos a firmar".getBytes();
+Signature signature = Signature.getInstance("SHA256withRSA");
 
 // firmar
-Signature signature = Signature.getInstance("SHA256withRSA");
 signature.initSign(privateKey);
-signature.update(data);
+signature.update(bytes);
 byte[] dataSignature = signature.sign();
 
 // validar firma
 signature.initVerify(publicKey);
-signature.update(data);
+signature.update(bytes);
 boolean valid = signature.verify(dataSignature);
 ```
 
-<br />
+### 🔐 Cipher
 
-### 🌐 Cipher
-
-Simmetric
+#### 🥄 Symmetric
 
 ```java
-PrintWriter socketWriter = new PrintWriter(socket.getOutputStream(), true);
-socketWriter.println("This is the data");
+Cipher cipher = Cipher.getInstance("AES");
+
+// Crypt
+cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+byte[] encryptedBytes = cipher.doFinal(bytes);
+
+// Decypt
+cipher.init(Cipher.DECRYPT_MODE, secretKey);
+byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
 ```
-* *El writer debe ser cerrado cuando se desee finalizar la conexión*.
 
-<br />
-
-### 🌐 Leer datos del socket (recibir)
-
-Para leer líneas de texto de un socket se puede usar un `BufferedReader`, así:
+#### 🍴 Asymmetric
 
 ```java
-var socketReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+Cipher cipher = Cipher.getInstance("RSA");
 
-socketReader.lines();     // Stream<String>
-socketReader.readLine();  // String
+// Crypt
+cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+byte[] encryptedBytes = cipher.doFinal(bytes);
+
+// Decrypt
+cipher.init(Cipher.DECRYPT_MODE, privateKey);
+byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
+
 ```
 
-* *El reader debe ser cerrado cuando se desee finalizar la conexión*.
 
 <br />
 
-### 🌐 Conectar a un servidor
+## Exercicis Cryptography
 
-Un programa **cliente** puede usar la clase `Socket` para iniciar una conexión con un servidor. Hay diversos constructores; uno de ellos es `Socket(String host, int port)`:
+### 🧬 Exercici 1: Hashing seguro de contraseñas
 
-```java
-Socket socket = new Socket("15.6.17.18", 7000);
+Escribe un programa que permita registrar usuarios y almacenar sus contraseñas de forma """_segura_""" utilizando SHA-256. Luego, implementa una función que valide una contraseña ingresada contra su hash almacenado.
+
+El programa debe mostrar el siguiente Menú:
+```
+1. Registrar usuario
+2. Iniciar sesión
+3. Salir
+Seleccione una opción: 
 ```
 
-Una vez establecida la conexión se pueden usar `PrintWriter` o un `BufferedReader` para comunicarse con el servidor.
+* El programa debe evitar que se dupliquen los nombres de usuario
+* Los usuarios los puedes almacenar en un HashMap.
 
-* *El socket, el writer y el reader deben ser cerrados cuando se desee finalizar la conexión*.
-  
-<br />
-
-## Exercicis ServerSocket
-
-### 🦫 Exercici 1: Wait, wait, Firefox
-
-Crea un simple servidor con `ServerSocket` que _repetidamente_ accepte una conexión, envie el texto "Hola, mundo", y cierre la conexión.
-
-```mermaid
-graph TD
-    A[ServerSocket] --> B{"while(true)"}
-    B --> C["accept()"]
-    C --> D[PrintWriter]
-    D --> E["println()"]
-    E --> F["close()"]
-    F --> B
-```
-
-Prueba el servidor conectando desde Firefox:
-
-![](pub/hola8080.png)
-
-Añade un `sleep` de 5 segundos antes de enviar el texto. Luego, conecta desde dos ventanas de Firefox diferentes y comprueba que la primera ventana tarda unos 5 segundos en recibir la respuesta, y la segunda tarda unos 10 segundos.
+**Extra**: prueba a añadir un poco de sal 🧂🧂🧂 a los passwords
 
 <br />
 
-### 🦖 Exercici 2: Wait, Firefox
+### 🪦 Exercici 2: Cifrado y descifrado simétrico con AES
 
-Añade _multithreading_ al ejercicio anterior. Cuando se acepte la conexión de un cliente, el envío de datos se manejará en un _thread_. 
-
-```mermaid
-graph TD
-    A[ServerSocket] --> B{"while(true)"}
-    B --> C["accept()"]
-    C --> D[start thread]
-    D -->|Ejecutar tarea en hilo virtual| F["PrintWriter"]
-    F --> G["println()"]
-    G --> H["close()"]
-    H --> |Finaliza tarea| D
-    D --> B
-```
-
-Comprueba que ahora el segundo cliente no debe esperar 10 segundos a recibir una respuesta.
+Implementa un programa que permita al usuario cifrar y descifrar un mensaje de texto usando el algoritmo AES con una clave secreta.
 
 <br />
 
-### 🦇 Exercici 3: Chat Server <-> Client
+### 🧪 Exercici 3: Cifrado y descifrado asimétrico con RSA
 
-Programa un chat, _básico_, con tu compañero de clase. Uno de los dos será el servidor y otro el cliente. Ambos, cliente y servidor, deberéis programar algún tipo de mensaje ✨especial✨, que cuando es recibido envia una respuesta automática.
-
-```mermaid
-graph LR
-    subgraph Alumno 1
-        A1["Cliente (Consola)"]
-    end
-    
-    subgraph Alumno 2
-        B1["Servidor (Consola)"]
-    end
-    
-    A1 ---|Conexión| B1
-    B1 <-->|Mensajes| A1
-```
+Implementa un programa que permita al usuario cifrar y descifrar un mensaje de texto usando usando un par de claves pública/privada.
 
 <br />
 
-### 🦇 Exercici 4: Chat Client <-> Server <-> Client
+### 🔭 Exercici 4: Generación y verificación de un hash seguro
 
-Programa un chat, _algo menos básico_, con tu compañero de clase. 
-
-Los dos seréis clientes, y os comunicaréis a través de un servidor.
-
-```mermaid
-graph LR
-    subgraph Alumno 1
-        A1["Cliente (Consola)"]
-    end
-    
-    subgraph Alumno 2
-        B1[Servidor]
-
-        B2["Cliente (Consola)"]
-    end
-    
-    A1 ---|Conexión| B1
-    B1 <-->|Mensajes| A1
-
-    B2 ---|Conexión| B1
-    B1 <-->|Mensajes| B2
-```
+Crea un programa que calcule el hash SHA-256 de un archivo y permita verificar si su contenido ha sido alterado comparándolo con un hash previamente almacenado.
 
 <br />
 
-### 👊👋✌️ Exercici 5: Rock, Paper, Network
+### 🧽 Exercici 5: Cifrado de archivos con AES
 
-Programa el juego Piedra-papel-tijeras en red. 
-Dos clientes conectaran a un servidor, e iran enviando sus manos. El servidor comprobara quien gana e irá enviando los resultados.
+Desarrolla un programa que solicite al usuario seleccionar un archivo y lo cifre utilizando AES. Luego, implementa una opción para descifrar el archivo con la clave secreta.
 
-**Servidor:**
+<br />
 
-```mermaid
-graph TD
-    A[Iniciar servidor] --> B["Aceptar conexión P1<br> Abrir reader y writer"]
-    B --> C["Enviar a P1<br>'Waiting for player2...'"]
-    C --> D[Aceptar conexión P2<br> Abrir reader y writer]
-    D --> E["Enviar a AMBOS<br>'GAME START'"]
+### 🪆 Exercici 6: Cifrado de archivos con RSA
 
-    E --> F[Inicializar puntajes:<br> winsP1 = 0, winsP2 = 0]
-    F --> G[Bucle infinito]
-    G --> H["Enviar a AMBOS<br>Sacar mano:<br>👊 Piedra (1), 👋 Papel (2), ✌️ Tijeras (3)"]
-    H --> I[Recibir manoP1 y manoP2]
+Desarrolla un programa que solicite al usuario seleccionar un archivo y lo cifre utilizando la clave pública RSA. Luego, implementa una opción para descifrar el archivo con la clave privada.
 
-    I --> J{Evaluar<br>manoP1 vs manoP2}
-    J -->|P1 gana| K[winsP1++<br>]
-    K --> L[Enviar a AMBOS<br>'You win / You loose'] 
-    J --> |P2 gana| M[winsP2++]
-    M --> N[Enviar a AMBOS<br>'You win / You loose'] 
-    J -->|Empate| O["Enviar a AMBOS<br>'Empate'"]
+<br />
 
-    L --> P
-    N --> P
-    O --> P[Enviar a AMBOS<br>winsP1 / winsP2]
-    P --> G
-```
+### 🪅 Exercici 7: Firma digital con RSA
 
-**Clientes:**
-
-```mermaid
-graph TD
-    A[Conectar al servidor] --> B["Abrir reader y writer"]
-    B --> C[Bucle infinito]
-    C --> D[Recibir mensaje del servidor]
-    D --> E[Imprimir mensaje por pantalla]
-    E --> F{El mensaje es el de sacar mano?}
-    F --> |Si| G[Leer mano del teclado]
-    G --> H[Enviar mano al servidor]
-    H --> C
-    F --> |No| C
-```
-
-![](pub/ppt.png)
+Desarrolla un programa que solicite al usuario seleccionar un archivo y genere una firma digital con RSA sobre dicho archivo. Luego, otro usuario podrá verificar si la firma es válida.
