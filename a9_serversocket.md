@@ -7,7 +7,7 @@
 https://docs.oracle.com/en/java/javase/23/security/java-cryptography-architecture-jca-reference-guide.html
 
 
-### 🔐 Base64
+### 🔐 String ↔ byte[] ↔ Base64
 
 ```java
 // String to byte[]
@@ -32,15 +32,6 @@ byte[] store = new byte[16];
 random.nextBytes(store);
 ```
 
-### 🔐 MessageDigest
-
-```java
-MessageDigest md = MessageDigest.getInstance("SHA-256");
-byte[] hashedBytes = md.digest(bytes);
-```
-
-<br />
-
 ### 🔐 KeyGenerator
 
 ```java
@@ -58,6 +49,17 @@ KeyPair keypair = keyGen.generateKeyPair();
 
 PrivateKey privateKey = keypair.getPrivate();
 PublicKey publicKey = keypair.getPublic();
+```
+
+<br>
+<hr>
+<br>
+
+### 🔐 MessageDigest
+
+```java
+MessageDigest md = MessageDigest.getInstance("SHA-256");
+byte[] hashedBytes = md.digest(bytes);
 ```
 
 ### 🔐 Signature
