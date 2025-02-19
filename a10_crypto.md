@@ -133,6 +133,8 @@ Cuando un usuario inicie sesión se le debe mostrar este Menú:
 Seleccione una opción:
 ```
 
+**Requisitos:**
+
 * El programa debe evitar que se dupliquen los nombres de usuario
 * Los usuarios los puedes almacenar en un HashMap.
 
