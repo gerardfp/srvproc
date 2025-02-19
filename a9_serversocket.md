@@ -1,47 +1,78 @@
-# ServerSocket
+# Cryptography
 
-* [Exercicis ServerSocket](#exercicis-serversocket)
+* [Exercicis Cryptography](#exercicis-cryptography)
 
 ## Overview
 
-https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/net/ServerSocket.html
-
-Un socket es un enlace de comunicación bidireccional entre dos programas que ejecutándose en distintas máquinas en una red. 
-Cada programa solicita un número de **puerto** al kernel, y de esta forma el kernel conoce a qué programa debe enviar los paquetes, ya que cada paquete lleva asociado un número de puerto al que se envían.
-
-En la arquitectura cliente-servidor, uno de los dos programas hace de servidor: solicita un puerto al kernel, y se queda esperando conexiones de clientes. 
-El cliente por su parte, solicita al kernel la conexión con un servidor, y el kernel le asigna un puerto aleatorio.
-
-Para iniciar un servidor en un programa Java se puede usar la clase `java.net.ServerSocket`. Un socket de servidor espera a que lleguen peticiones por la red, y realiza alguna operación en base a dicha petición, retornando possiblemente una respuesta al solicitante.
+https://docs.oracle.com/en/java/javase/23/security/java-cryptography-architecture-jca-reference-guide.html
 
 
-### 🌐 Iniciar un servidor
-
-Se crea una instancia de `ServerSocket` pasando el número de puerto solicitado. Si el puerto está en uso lanza una excepción. (Los puertos 1 a 1023 se deben solicitar como _root_).
+### Base64
 
 ```java
-ServerSocket serverSocket = new ServerSocket(8080); 
+// String to byte[]
+byte[] bytes = "un texto".getBytes();
+
+// byte[] --> Base64
+String enBase64 = Base64.getEncoder().encodeToString(bytes);
+
+// Base64 --> byte[]
+byte[] bytes = Base64.getDecoder().decode(enBase64);
+
 ```
 
-* *El serverSocket debe ser cerrado cuando se desee dejar de aceptar conexiones*.
+### 🌐 MessageDigest
+
+```java
+String message = "Los datos a hashear";
+MessageDigest md = MessageDigest.getInstance("SHA-256");
+byte[] hashedBytes = md.digest(message.getBytes());
+String hash = Base64.getEncoder().encodeToString(hashedBytes);
+```
 
 <br />
 
-### 🌐 Aceptar una conexión
-
-La llamada al método `accept()` bloquea el programa hasta que llegue una conexión de un cliente. Retorna un objeto `Socket` que se puede usar para recibir o enviar datos.
-
+### KeyGenerator
 ```java
-Socket socket = serverSocket.accept();
+KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
+keyGenerator.init(256);
+SecretKey secretKey =  keyGenerator.generateKey();
 ```
 
-* *El socket debe ser cerrado cuando se desee finalizar la conexión*.
+### KeyPairGenerator
+
+```java
+KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+keyGen.initialize(2048);
+KeyPair keypair = keyGen.generateKeyPair();
+
+PrivateKey privateKey = keypair.getPrivate();
+PublicKey publicKey = keypair.getPublic();
+```
+
+### 🌐 Signature
+
+
+```java
+byte[] data = "Datos a firmar".getBytes();
+
+// firmar
+Signature signature = Signature.getInstance("SHA256withRSA");
+signature.initSign(privateKey);
+signature.update(data);
+byte[] dataSignature = signature.sign();
+
+// validar firma
+signature.initVerify(publicKey);
+signature.update(data);
+boolean valid = signature.verify(dataSignature);
+```
 
 <br />
 
-### 🌐 Escribir datos en el socket (enviar)
+### 🌐 Cipher
 
-Dependiendo del tipo de datos que queramos enviar (bytes, Strings, datos primitivos, objetos, ... ), existen distintos métodos. Para enviar Strings el más común es usar un `PrintWriter`
+Simmetric
 
 ```java
 PrintWriter socketWriter = new PrintWriter(socket.getOutputStream(), true);
