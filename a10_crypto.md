@@ -114,7 +114,7 @@ byte[] decryptedBytes = cipher.doFinal(encryptedBytes);
 
 ## Exercicis Cryptography
 
-### 🧬 Exercici 1: Hashing seguro de contraseñas
+### 🧬 Exercici 1: Hashing seguro de contraseñas con SHA-256
 
 Escribe un programa que permita registrar usuarios y almacenar sus contraseñas de forma """_segura_""" utilizando SHA-256. Luego, implementa una función que valide una contraseña ingresada contra su hash almacenado.
 
@@ -145,7 +145,7 @@ Implementa un programa que permita al usuario cifrar y descifrar un mensaje de t
 
 <br />
 
-### 🔭 Exercici 4: Generación y verificación de un hash seguro
+### 🔭 Exercici 4: Generación y verificación de un hash seguro con SHA-256
 
 Crea un programa que calcule el hash SHA-256 de un archivo y permita verificar si su contenido ha sido alterado comparándolo con un hash previamente almacenado.
 
