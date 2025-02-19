@@ -126,6 +126,13 @@ El programa debe mostrar el siguiente Menú:
 Seleccione una opción: 
 ```
 
+Cuando un usuario inicie sesión se le debe mostrar este Menú:
+```
+1. Mostrar usuarios y passwords
+2. Cerrar sesión
+Seleccione una opción:
+``
+
 * El programa debe evitar que se dupliquen los nombres de usuario
 * Los usuarios los puedes almacenar en un HashMap.
 
